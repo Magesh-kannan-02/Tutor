@@ -26,9 +26,13 @@ module.exports = {
         large: "6px", // rounded-large
       },
       fontSize: {
+        body5: [
+          "1.25rem",
+          { lineHeight: "1", letterSpacing: "0%", fontWeight: "500" },
+        ],
         body: [
           "1rem",
-          { lineHeight: "1", letterSpacing: "0%", fontWeight: "500" },
+          { lineHeight: "1", letterSpacing: "0%", fontWeight: "700" },
         ],
       },
     },
@@ -42,6 +46,7 @@ module.exports = {
           foreground: "#274600",
           '50':'#73CD03',
           '100':"#C6FF7F",
+          '200': '#b8ff5f'
         },
         secondary: {
           DEFAULT: "#414141",
@@ -73,7 +78,8 @@ module.exports = {
           DEFAULT: "#FFFFFF",
           foreground: "#000000",
           '50':"#EEEEEE",
-          '100':"#262626"
+          '100':"#262626",
+          '200':"#010101"
         },
       },
       dark: {},
