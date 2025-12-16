@@ -3,6 +3,7 @@ export const ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
   NOT_AUTHORIZED: "/not-authorized",
-  PLAYGROUND:"/playground"
+  PLAYGROUND:"/playground",
+  SELECT_TEST:"/select-test",
 
 };

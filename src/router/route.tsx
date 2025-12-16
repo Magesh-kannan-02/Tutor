@@ -1,4 +1,4 @@
-import {Home,NotAuthorized,PlayGround} from "@/pages";
+import {Home,NotAuthorized,PlayGround,SelectTest} from "@/pages";
 
 
 import { ROUTES } from "@/utils";
@@ -6,7 +6,7 @@ import { ROUTES } from "@/utils";
 export const publicRoutes = [
   { path: ROUTES.NOT_AUTHORIZED, element: <NotAuthorized /> },
   { path: ROUTES.PLAYGROUND, element: <PlayGround /> },
-  
+  { path: ROUTES?.SELECT_TEST, element: <SelectTest /> }, 
 ];
 
 // Protected pages

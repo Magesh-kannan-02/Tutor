@@ -81,6 +81,7 @@ module.exports = {
           foreground: "#274600",
           '50':'#73CD03',
           '100':"#C6FF7F",
+          '200': '#b8ff5f'
         },
         secondary: {
           DEFAULT: "#414141",
@@ -94,20 +95,28 @@ module.exports = {
         warning: {
           DEFAULT: "#FF9437",
         },
+        success:{
+          DEFAULT: "#51BC51",
+          '100':"#DDE7EE",
+          '200':"#effedd",
+        },
         content1:{
           DEFAULT: "#000000",
           foreground: "#FFFFFF",
           '50':"#78787833",
           '100':"#565656"
         },
-
+        content2:{
+          DEFAULT: "#565656"
+        },
 
 
         background: {
           DEFAULT: "#FFFFFF",
           foreground: "#000000",
           '50':"#EEEEEE",
-          '100':"#262626"
+          '100':"#262626",
+          '200':"#010101"
         },
       },
       dark: {},
