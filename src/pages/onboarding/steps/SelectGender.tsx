@@ -20,11 +20,11 @@ export const SelectGender = ({ onNext }: SelectGenderProps) => {
     // smooth UX
     setTimeout(() => {
       onNext();
-    }, 250);
+    }, 200);
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 pb-16">
+    <div className="flex flex-col items-center gap-2 pb-16 py-5 px-4">
       <p className="text-[1.75rem] font-semibold text-content1-foreground">
         What is your gender?
       </p>

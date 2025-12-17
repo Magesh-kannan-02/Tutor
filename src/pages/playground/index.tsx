@@ -23,11 +23,11 @@ import {
 
 import { Avatarcard } from "@/components/atoms/avatarcard/avatarcard";
 import { Playcard } from "@/components/ui/playcard/playcard";
+
 import React, { useState } from "react";
 
 export const PlayGround = () => {
-  const [fruit, setFruit] = React.useState("");
-  const [drawerOpen, setDrawerOpen] = useState(false); 
+  const [fruit, setFruit] = React.useState(""); 
   const [playing, setPlaying] = useState(false);
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -125,6 +125,59 @@ export const PlayGround = () => {
       <CircularTimer duration={20} size={140} strokeWidth={5} />
       <CircularProgress value={50} />
       <Caption />
+          <Wordscard
+            icontype="snail"
+            iconName="snail"
+            caption="63 Words — Slow"
+            description="You're doing great! Push your pace slightly to sound more natural and lively."
+          />
+          <Wordscard
+            icontype="arm"
+            iconName="arm"
+            title="Grammar’s got a few tricks up its sleeve 😏"
+            titleClassname="text-lg text-content1-foreground font-bold"
+            caption="Let’s break them down and fix them fast."
+            captionClassname="text-sm text-medium text-secondary-150"
+          />
+          
+          <Playcard
+            title="actually"
+            icontype={playing ? "sound" : "play"} 
+            iconName={playing ? "sound" : "play"}
+            onClick={() => setPlaying(!playing)}   
+          />
+    
+        <Inputprompt
+          label="Your Name"
+          placeholder="Enter your name"
+          type="text"
+          value={name}
+          onChange={setName}
+        />
+    
+        <Inputprompt
+          label="Password"
+          placeholder="Enter password"
+          type="password"
+          value={password}
+          onChange={setPassword}      
+        />
+    
+        <Inputprompt
+          label="Password"
+          placeholder="Enter password"
+          type="password"
+          value={password}
+          onChange={setPassword}
+          confirm
+          confirmValue={confirmPassword}
+          onConfirmChange={setConfirmPassword}
+          showStrength
+          mode="full"     
+        />
+    
+        <Avatarcard icontype="avatar" imageClassname="w-[12rem] h-[11rem]" className="w-36 h-36 overflow-hidden"/>
+    
       <GrammarCard
         title="Use the correct noun form:"
         message="I’m Working on it!"
