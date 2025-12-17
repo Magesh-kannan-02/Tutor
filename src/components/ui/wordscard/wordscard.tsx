@@ -21,7 +21,7 @@ interface WordscardProps {
 }
 
 export const Wordscard = ({
-  title = "Words per minute",
+  title = "",
   caption = "",
   description,
   className,

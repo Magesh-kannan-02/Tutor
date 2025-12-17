@@ -12,3 +12,4 @@ export { VocabularyIcon } from './VocabularyIcon';
 export { FluencyIcon } from './FluencyIcon';
 export {ArrowRightIcon} from './arrowRightIcon'
 export {ArrowUpIcon} from './arrowUpIcon'
+export {ArrowLeftIcon} from './arrowLeftIcon'

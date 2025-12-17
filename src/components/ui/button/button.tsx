@@ -5,17 +5,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "flex items-center justify-center gap-2  rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "flex items-center  justify-center  gap-2   rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50  ",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground  ",
+          "bg-primary text-primary-foreground   ",
 
         outline:
           "border border-input bg-background  hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-content1-foreground  !text-center !flex !justify-center !items-center w-full !rounded-full   !py-[1.25rem] ",
+          "bg-content1-foreground  !text-center !flex !justify-center !items-center w-full !rounded-full   !py-[1.6rem] ",
         flat: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
@@ -78,7 +78,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <ButtonComponent
         id={id}
         className={cn(
-          "cursor-pointer select-none  transition-all duration-200 ease-out   active:scale-[0.98] active: active:duration-100",
+          "cursor-pointer   transition-all duration-200 ease-out   active:scale-[0.98] active: active:duration-100",
           buttonVariants({ variant, size }),
           baseClassName
         )}

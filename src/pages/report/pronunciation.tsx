@@ -1,0 +1,54 @@
+import { Wordscard } from "@/components";
+import { Playcard } from "@/components/ui/playcard/playcard";
+import { pronountiationTileData, pronountiationwords } from "@/data/report";
+import React from "react";
+
+const PronunciationCard = ({ item }: { item: any }) => {
+  const [playingId, setPlayingId] = React.useState<string | null>(null);
+
+  return (
+    <div className="flex flex-col gap-[0.813rem]">
+      <p className="font-bold font-sans text-[1rem] text-secondary-150">
+        {item?.title}
+      </p>
+
+      <div className="flex flex-col gap-[0.75rem]">
+        {item?.data?.map((data: any) => {
+          const isPlaying = playingId === data.id;
+
+          return (
+            <Playcard
+            className="cursor-pointer"
+              key={data.id}
+              title={data.title}
+              icontype={isPlaying ? "sound" : "play"}
+              iconName={isPlaying ? "sound" : "play"}
+              onClick={() => setPlayingId(isPlaying ? null : data.id)}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export const Pronunciation = () => {
+  return (
+    <div className="flex flex-col py-[2rem] gap-y-[1.25rem] w-full">
+      {/* Summary Card */}
+      <Wordscard
+        icontype={pronountiationTileData?.icontype}
+        iconName={pronountiationTileData?.icontype}
+        caption={pronountiationTileData?.title}
+        description={pronountiationTileData?.description}
+      />
+
+      {/* Pronunciation Sections */}
+      <div className="flex flex-col gap-[1.25rem]">
+        {pronountiationwords?.map((item: any) => (
+          <PronunciationCard key={item.id} item={item} />
+        ))}
+      </div>
+    </div>
+  );
+};

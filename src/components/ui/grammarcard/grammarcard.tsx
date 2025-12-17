@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "../card/card";
 import { Chip } from "@/components";
-import { PlayIcon } from "@/assets";
+import { PlayIcon, SoundIcon } from "@/assets";
 import { cn } from "@/lib/utils";
 
 interface GrammarCardProps {
@@ -22,6 +22,7 @@ interface GrammarCardProps {
   messageIconclassName?: string; // custom class for message icon
   chipclassName?: string; // custom class for chip wrapper
   chiptextClassName?: string; // custom class for chip text
+  isActive?:boolean;  // to handle Active state
 }
 
 export const GrammarCard = ({
@@ -42,10 +43,14 @@ export const GrammarCard = ({
   messageIconclassName = "",
   chipclassName = "",
   chiptextClassName = "",
+  isActive=false,
   ...rest
 }: GrammarCardProps) => {
   // state to track audio play status
   const [isPlaying, setIsPlaying] = React.useState(false);
+  React.useEffect(()=>{
+    if(isActive) setIsPlaying(true);
+  },[isActive])
 
   // handle audio click
   const handlePlayAudio = () => {
@@ -83,7 +88,7 @@ export const GrammarCard = ({
 
       {/* Audio play chip */}
       <Chip
-        startContent={isPlaying ? <PlayIcon /> : <PlayIcon />} // always same icon
+        startContent={isPlaying ? <SoundIcon /> : <PlayIcon />} // always same icon
         text={isPlaying ? activelabelname : label} // shows active/normal label
         handleClick={handlePlayAudio} // click handler
         allowAnimation

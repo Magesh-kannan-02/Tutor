@@ -81,7 +81,8 @@ module.exports = {
           foreground: "#274600",
           '50':'#73CD03',
           '100':"#C6FF7F",
-          '200': '#b8ff5f'
+          '200': '#b8ff5f',
+		  '250':"#052D14"
         },
         secondary: {
           DEFAULT: "#414141",
@@ -104,7 +105,9 @@ module.exports = {
           DEFAULT: "#000000",
           foreground: "#FFFFFF",
           '50':"#78787833",
-          '100':"#565656"
+          '100':"#565656",
+		  '150':"#05152D",
+		  '200':"#233147",
         },
         content2:{
           DEFAULT: "#565656"

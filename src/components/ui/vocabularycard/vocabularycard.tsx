@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRightIcon, ArrowUpIcon, PlayIcon } from "@/assets";
+import { ArrowRightIcon, ArrowUpIcon, PlayIcon, SoundIcon } from "@/assets";
 import { AccordionComponent, Chip } from "@/components";
 import { cn } from "@/lib/utils";
 
@@ -73,7 +73,7 @@ function Content({
         return (
           <Chip
             key={index}
-            startContent={isActive ? <PlayIcon /> : <PlayIcon />}
+            startContent={isActive ? <SoundIcon />: <PlayIcon />}
             text={isActive ? chip.activeLabel : chip.label}
             handleClick={() => onChipClick(index)}
             allowAnimation

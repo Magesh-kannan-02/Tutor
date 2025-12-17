@@ -25,4 +25,15 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   width: 0px;
   height: 0px;
+  display: none !important;
 }
+svg {
+  pointer-events: none;
+}
+
+* {
+  scrollbar-width: none; 
+  
+}
+
+

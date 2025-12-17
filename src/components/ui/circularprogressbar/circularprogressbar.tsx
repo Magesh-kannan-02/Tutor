@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface CircularProgressProps {
+export interface CircularProgressProps {
   id?: string; // unique id
   value: number; // 0–100 (progress)
   size?: number; // diameter

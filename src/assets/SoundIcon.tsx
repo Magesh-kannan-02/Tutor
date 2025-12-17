@@ -4,15 +4,17 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
   color?: string;
+  className?: string;
 }
 
-export const SoundIcon = ({ height = 12,width= 14, color = "white", ...props }: IconProps) => (
+export const SoundIcon = ({ height = 12,width= 14, color = "white",className = "",...props }: IconProps) => (
   <svg
     width={width}
     height={height}
     viewBox="0 0 14 12"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
     {...props}
   >
     <path

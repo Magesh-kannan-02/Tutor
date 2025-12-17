@@ -181,7 +181,7 @@ export const PlayGround = () => {
         title="Use the correct noun form:"
         message="I’m Working on it!"
         explanation="You can count apps or websites, but not software.Think of “software” as a whole category, not separate items."
-        className="!bg-[#382F11] "
+         
       />
       <VocabularyCard
   value="a1-good"
@@ -189,7 +189,7 @@ export const PlayGround = () => {
   word="Good"
   optionalWord="Beneficial Pleasant"
   chips={chipsData}
-  className="!bg-[#360F34]"
+   
 />
      <Button
        

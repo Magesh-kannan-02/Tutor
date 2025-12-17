@@ -7,19 +7,25 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const location = useLocation();
-  const currentPath = location?.pathname;
-  const userRole = "user";
-  const isAuthenticated = true; // authentication logic 
+  const { pathname } = useLocation();
+
+  const userRole = "user"; // get from auth store
+  const isAuthenticated = true;
+
   if (!isAuthenticated) {
-    return <Navigate to={ROUTES?.LOGIN} replace />;
+    return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
   const allowedPaths = roleRoutes[userRole as keyof typeof roleRoutes];
 
-  if (!allowedPaths || !allowedPaths.includes(currentPath)) {
-    return <Navigate to={ROUTES?.NOT_AUTHORIZED} replace />;
+  const isAllowed = allowedPaths?.some(
+    (route) =>
+      pathname === route || pathname.startsWith(`${route}/`)
+  );
+
+  if (!isAllowed) {
+    return <Navigate to={ROUTES.NOT_AUTHORIZED} replace />;
   }
 
-  return children;
+  return <>{children}</>;
 }
