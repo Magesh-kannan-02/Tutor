@@ -4,15 +4,17 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
   color?: string;
+  className?: string;
 }
 
-export const PlayIcon = ({ height = 14,width= 13, color = "white", ...props }: IconProps) => (
+export const PlayIcon = ({ height = 14,width= 13, color = "white", className = "",...props }: IconProps) => (
   <svg
     width={width}
     height={height}
     viewBox="0 0 13 14"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className={className}
     {...props}
   >
     <path
