@@ -29,7 +29,7 @@ export const SelectAge = ({ onNext }: SelectAgeProps) => {
         No judgments, just better recommendations for you.
       </p>
 
-      <div className="flex flex-col gap-4 w-full max-w-sm">
+      <div className="flex flex-col gap-5 w-full max-w-sm max-h-[500px] overflow-y-scroll">
         {ageGroups.map((age) => (
           <Featurecard
             key={age.id}

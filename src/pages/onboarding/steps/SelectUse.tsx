@@ -14,7 +14,7 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
   } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col items-center h-full justify-between py-5 px-4">
+    <div className="flex flex-col items-center h-full justify-between py-4 px-4">
       <div className="flex flex-col items-center gap-4 w-full">
         <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[20rem]">
           When do you usually use English?
@@ -24,7 +24,7 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
           Pick everything that matches you
         </p>
 
-        <div className="flex flex-col gap-4 w-full pb-16">
+        <div className={cn("flex flex-col gap-4 w-full",englishUseCases.length > 0?' max-h-[55dvh] overflow-y-auto':' max-h-[70dvh] overflow-y-auto')}>
           {useCaseOptions.map((item) => {
             const isActive = englishUseCases.includes(item.label);
 
@@ -52,7 +52,7 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
         </div>
       </div>
 
-      <div className="pb-5 w-full">
+      <div className=" w-full sticky bottom-0">
         {englishUseCases.length > 0 && (
           <Button
             buttonText="Continue"

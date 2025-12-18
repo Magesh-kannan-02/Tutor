@@ -31,8 +31,8 @@ export const SelectConfidence = ({ onNext }: SelectConfidenceProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center h-full justify-between py-5 px-4">
-      <div className="flex flex-col items-center gap-5 w-full">
+    <div className="flex flex-col items-center h-full justify-between py-4 px-4">
+      <div className="flex flex-col items-center gap-4 w-full">
         <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[22rem]">
           What’s holding you back from confident English?
         </p>
@@ -41,7 +41,7 @@ export const SelectConfidence = ({ onNext }: SelectConfidenceProps) => {
           Choose everything that applies
         </p>
 
-        <div className="flex flex-col gap-4 w-full mb-14">
+        <div className={cn("flex flex-col gap-4 w-full ",confidenceIssues.length > 0?'max-h-[400px] overflow-y-auto':'max-h-[500px] overflow-y-auto')}>
           {confidenceIssuesOptions.map((item) => {
             const isActive = confidenceIssues.includes(item);
 
@@ -67,7 +67,7 @@ export const SelectConfidence = ({ onNext }: SelectConfidenceProps) => {
         </div>
       </div>
 
-      <div className="pb-5 w-full">
+      <div className="w-full sticky bottom-0">
         {confidenceIssues.length > 0 && (
           <Button
             buttonText="Continue"

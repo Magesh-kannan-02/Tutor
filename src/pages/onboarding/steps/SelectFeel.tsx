@@ -29,7 +29,7 @@ export const SelectFeel = ({ onNext }: SelectFeelProps) => {
         className="px-[2.7rem]"
       />
 
-      <div className="flex flex-col gap-4 w-full pb-10">
+      <div className="flex flex-col gap-4 w-full pb-10  max-h-[385px] overflow-y-auto">
         {feelOptions.map((item) => (
           <Iconcard
             key={item.id}
