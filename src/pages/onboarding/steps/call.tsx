@@ -49,7 +49,7 @@ export const Call = ({onNext}:CallProps) => {
   }, [isCallDrawerOpen, tickCallDrawer]);
 
   return (
-    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-7">
+    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-7 justify-between">
       <div className="flex flex-col items-center">
         <Avatarcard
           icontype="avatar"
@@ -112,7 +112,7 @@ export const Call = ({onNext}:CallProps) => {
         headerClassName="text-xl text-content1-foreground font-semibold"
         headerContentCalssname="flex-1 text-center"
         content={
-          <div className=" p-4 h-full flex flex-col gap-10 pb-16">
+          <div className=" p-4 h-full flex flex-col gap-10 pb-16"  >
             <p className="mt-6 text-2xl font-bold text-green-400 flex-1">
               I’m working on it!
             </p>

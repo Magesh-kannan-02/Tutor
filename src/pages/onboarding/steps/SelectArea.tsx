@@ -27,7 +27,7 @@ export const SelectArea = ({ onNext }: SelectAreaProps) => {
         What area do you work in?
       </p>
 
-      <div className="flex flex-col gap-4 w-full pb-16">
+      <div className="flex flex-col gap-4 w-full max-h-[500px] overflow-y-auto">
         {workAreas.map((item) => {
           const isActive = workArea === item.label;
 

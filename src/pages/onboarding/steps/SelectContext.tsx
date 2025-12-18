@@ -19,9 +19,9 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
   } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col items-center h-full justify-between gap-20">
+    <div className="flex flex-col items-center h-full justify-between gap-12">
       {/* Top content */}
-      <div className="flex flex-col items-center gap-6 mt-6">
+      <div className="flex flex-col items-center gap-5 mt-4">
         {/* AI orb */}
         <div className="relative w-24 h-24">
           <img

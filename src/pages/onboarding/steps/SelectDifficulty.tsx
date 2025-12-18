@@ -14,13 +14,13 @@ export const SelectDifficulty = ({ onNext }: SelectDifficultyProps) => {
   } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col items-center h-full justify-between gap-2 py-5 px-4">
+    <div className="flex flex-col items-center h-full justify-between gap-2 py-4 px-4">
       <div className="flex flex-col items-center w-full">
         <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[22rem] mb-10">
           What makes learning English difficult for you?
         </p>
 
-        <div className="flex flex-col gap-4 w-full pb-5">
+        <div className={cn("flex flex-col gap-4 w-full",difficultyFactors.length > 0?'max-h-[430px] overflow-y-auto':'max-h-[490px] overflow-y-auto')}>
           {difficultyOptions.map((item) => {
             const isActive = difficultyFactors.includes(item.label);
 
@@ -48,13 +48,13 @@ export const SelectDifficulty = ({ onNext }: SelectDifficultyProps) => {
         </div>
       </div>
 
-      <div className="pb-5 w-full">
+      <div className=" w-full sticky bottom-0">
         {difficultyFactors.length > 0 && (
           <Button
             buttonText="Continue"
             variant="secondary"
             textClassName="text-xl text-content1 font-medium"
-            baseClassName="!py-7 w-full mt-4"
+            baseClassName="!py-7 w-full"
             onClick={onNext}
           />
         )}

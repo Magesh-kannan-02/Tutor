@@ -23,8 +23,8 @@ export const SelectLevel = ({ onNext }: SelectLevelProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 pb-10 py-5 px-4">
-      <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[20rem] mb-5">
+    <div className="flex flex-col items-center gap-5 pb-10 py-3 px-4">
+      <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[20rem] mb-4">
         What’s your English level right now?
       </p>
 
