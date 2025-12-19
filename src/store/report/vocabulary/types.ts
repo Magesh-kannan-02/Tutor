@@ -1,24 +1,23 @@
-export interface VocabularySliceTypes{
-  score: number;
-  description: string;
-  title:{
+interface ChipItem {
+  label: string;
+  activeLabel: string;
+  audioUrl?: string;
+}
+export interface VocabularySliceTypes {
+  vocabularyScore: number;
+  vocabularydescription: string;
+  vocabularytitle: {
     iconType: string;
     title: string;
     description?: string;
-  }
+  };
 
-
-    
-  data: {
+  vocabularydata: {
     id: string;
     level: string;
     word: string;
     optionalWord?: string;
-    value: string;
-    chips: {
-      label: string;
-      activeLabel: string;
-    }[];
+    chips: ChipItem[];
   }[];
 }
-export type VocabularyState=VocabularySliceTypes;
+export type VocabularyState = VocabularySliceTypes;

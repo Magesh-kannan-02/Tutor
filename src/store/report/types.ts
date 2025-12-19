@@ -9,4 +9,4 @@ export interface ReportSliceTypes  {
 };
 
 
-export type ReportState=ReportSliceTypes
+export type ReportState = ReportSliceTypes;

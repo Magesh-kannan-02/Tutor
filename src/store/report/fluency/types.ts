@@ -1,14 +1,7 @@
-import type { ReportState } from "../types";
 
-export interface MetaData {
-  title: string;
-  value: number;
-  description: string;
-  gradientFrom: string;
-  gradientTo: string;
-  trackColor: string;
-  bgColour: string;
-}
+
+
+  
 
 export interface FrequencyItem {
   id: string;
@@ -17,9 +10,17 @@ export interface FrequencyItem {
   description: string;
   iconType: string;
 }
+interface FluencyTitle{
+  iconType: string;
+  title: string;
+  description: string; 
+}
 
-export interface FluencySliceTypes extends MetaData {
-  data: FrequencyItem[];
+export interface FluencySliceTypes {
+  fluencyScore: number;
+  fluencyDescription: string;
+  fluencytitle: FluencyTitle
+  fluencydata: FrequencyItem[];
   
 }
 

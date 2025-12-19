@@ -14,14 +14,14 @@ export const Grammar = () => {
       />
 
       <div className="flex flex-col gap-[1.75rem]">
-        {grammarData.map((section, sectionIndex) => (
+        {grammarData?.map((section, sectionIndex) => (
           <div key={sectionIndex} className="flex flex-col gap-[1.75rem]" >
             <p className="font-bold font-sans text-[1rem]  text-secondary-150">
               {section?.category}
             </p>
             <div className="flex flex-col gap-[1rem]">
 
-            {section?.cards.map((card, cardIndex) => (
+            {section?.cards?.map((card, cardIndex) => (
               <GrammarCard
                label={card?.label}
                 activelabelname={card?.activelabel}
