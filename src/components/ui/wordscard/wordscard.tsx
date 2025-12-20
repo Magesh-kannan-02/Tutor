@@ -73,7 +73,7 @@ export const Wordscard = ({
       </div>
 
       {/* Description / children */}
-      <div className={cn("my-3 text-sm text-secondary-150 leading-snug", bodyClassname)}>
+      <div className={cn("my-3 text-h6 text-secondary-150 leading-snug", bodyClassname)}>
         {children ?? description}
       </div>
     </div>

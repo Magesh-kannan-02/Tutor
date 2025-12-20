@@ -49,7 +49,7 @@ export const Call = ({onNext}:CallProps) => {
   }, [isCallDrawerOpen, tickCallDrawer]);
 
   return (
-    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-7">
+    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-7 justify-between">
       <div className="flex flex-col items-center">
         <Avatarcard
           icontype="avatar"
@@ -61,7 +61,7 @@ export const Call = ({onNext}:CallProps) => {
           {selectedContext}
         </p>
 
-        <p className="text-xl font-bold text-content1-foreground">
+        <p className="text-body4 font-bold text-content1-foreground">
           {contextCategory === "daily"
             ? "Daily Conversation"
             : "Career Training"}
@@ -72,7 +72,7 @@ export const Call = ({onNext}:CallProps) => {
         <CircularTimer duration={180} size={150} strokeWidth={5} />
       </div>
 
-      <p className="mt-6 text-sm text-content1-foreground">
+      <p className="mt-6 text-h6 text-content1-foreground">
         Hey, I’m Harry! How can I help you?
       </p>
 
@@ -109,15 +109,15 @@ export const Call = ({onNext}:CallProps) => {
         overlayClassName="fixed inset-x-0 mx-auto bg-transparent"
         className="!h-[485px] max-w-[450px] !mx-auto"
         headerContent="Incorrect verb form"
-        headerClassName="text-xl text-content1-foreground font-semibold"
+        headerClassName="text-body4 text-content1-foreground font-semibold"
         headerContentCalssname="flex-1 text-center"
         content={
-          <div className=" p-4 h-full flex flex-col gap-10 pb-16">
+          <div className=" p-4 h-full flex flex-col gap-10 pb-16"  >
             <p className="mt-6 text-2xl font-bold text-green-400 flex-1">
               I’m working on it!
             </p>
 
-            <p className="text-sm text-content1-foreground text-center">
+            <p className="text-h6 text-content1-foreground text-center">
               Close in: {formatTime(callDrawerCloseIn)}
             </p>
           </div>

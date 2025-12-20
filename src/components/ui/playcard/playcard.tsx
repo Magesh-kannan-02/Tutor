@@ -63,7 +63,7 @@ export const Playcard = ({
         {/* TITLE */}
         <div className="flex-1 min-w-0">
           <div
-            className={cn("truncate text-sm text-content1-foreground", titleClassname)}
+            className={cn("truncate text-h6 text-content1-foreground", titleClassname)}
           >
             {title}
           </div>

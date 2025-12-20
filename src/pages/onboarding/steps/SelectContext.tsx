@@ -19,10 +19,10 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
   } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col items-center h-full justify-between gap-20">
-      {/* Top content */}
-      <div className="flex flex-col items-center gap-6 mt-6">
-        {/* AI orb */}
+    <div className="flex flex-col min-h-full gap-12">
+      
+      {/* TOP CONTENT */}
+      <div className="flex flex-col items-center gap-5 mt-4">
         <div className="relative w-24 h-24">
           <img
             src={aiCallImg}
@@ -36,21 +36,18 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
           />
         </div>
 
-        {/* Description */}
-        <div className="text-sm text-secondary-150 font-semibold text-center">
+        <div className="text-h6 text-secondary-150 font-semibold text-center">
           <p>3 minutes call with AI tutor</p>
           <p>to assess your English in the chosen context</p>
         </div>
 
-        {/* Timer */}
         <CircularTimer duration={180} size={150} strokeWidth={5} stop />
       </div>
 
-      {/* Bottom controls */}
-      <div className="flex flex-col gap-8 w-full pb-4">
-        {/* Context select */}
+      {/* BOTTOM CONTROLS */}
+      <div className="flex flex-col gap-8 w-full mt-auto">
         <div className="flex flex-col gap-4">
-          <p className="text-xl text-content1-foreground text-center font-bold">
+          <p className="text-body4 text-content1-foreground text-center font-bold">
             Select your context
           </p>
 
@@ -63,34 +60,25 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
             onChange={setContextCategory}
           />
 
-          {/* Chips */}
-          <div className="flex gap-3 justify-start w-full overflow-x-auto overflow-y-hidden">
-            {contextChips.map((chip, i) => {
-              const isActive = selectedContext === chip;
-
-              return (
-                <Chip
-                  key={chip}
-                  text={chip}
-                  isactive={isActive}
-                  handleClick={() => setSelectedContext(chip)}
-                  allowAnimation
-                  className={cn(
-                    "cursor-pointer flex-shrink-0",
-                    i === 0 && "ml-4"
-                  )}
-                />
-              );
-            })}
+          <div className="flex gap-3 overflow-x-auto">
+            {contextChips.map((chip, i) => (
+              <Chip
+                key={chip}
+                text={chip}
+                isactive={selectedContext === chip}
+                handleClick={() => setSelectedContext(chip)}
+                allowAnimation
+                className={cn("flex-shrink-0", i === 0 && "ml-4")}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Call button */}
-        <div className="px-4">
+        <div className="px-4 sticky bg-background-200 bottom-0 pt-2 pb-2">
           <Button
             buttonText="Call"
             variant="secondary"
-            textClassName="text-xl text-content1 font-medium"
+            textClassName="text-body5 !text-content1 font-medium"
             baseClassName="!py-7 w-full"
             onClick={onNext}
           />
@@ -99,3 +87,4 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
     </div>
   );
 };
+

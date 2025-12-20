@@ -12,15 +12,12 @@ export const SelectFeel = ({ onNext }: SelectFeelProps) => {
 
   const handleSelect = (id: FeelOption) => {
     setFeelSameWay(id);
-
-    setTimeout(() => {
-      onNext?.();
-    }, 200);
+    setTimeout(() => onNext?.(), 200);
   };
 
   return (
-    <div className="flex flex-col items-center gap-7 py-5 px-4">
-      <p className="text-[1.75rem] font-semibold text-content1-foreground max-w-[17rem] text-center">
+    <div className="flex flex-col items-center gap-7 px-4 pt-4">
+      <p className="text-body3 font-semibold text-content1-foreground max-w-[17rem] text-center leading-8" >
         Do you feel the same way?
       </p>
 
@@ -28,8 +25,7 @@ export const SelectFeel = ({ onNext }: SelectFeelProps) => {
         title="I understand in my mind, but struggle to say it out loud."
         className="px-[2.7rem]"
       />
-
-      <div className="flex flex-col gap-4 w-full pb-10">
+      <div className="flex flex-col gap-4 pb-10 w-full">
         {feelOptions.map((item) => (
           <Iconcard
             key={item.id}
@@ -47,3 +43,4 @@ export const SelectFeel = ({ onNext }: SelectFeelProps) => {
     </div>
   );
 };
+

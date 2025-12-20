@@ -9,7 +9,7 @@ export const Percentage = ({ onNext }: PercentageProps) => {
   const { percentage, workArea } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col h-full justify-between items-center text-center py-5 px-4">
+    <div className="flex flex-col h-full justify-between items-center text-center py-2 px-4">
       {/* Center content */}
       <div className="flex-1 flex flex-col justify-start items-center">
         {/* Big outlined percentage */}
@@ -38,11 +38,11 @@ export const Percentage = ({ onNext }: PercentageProps) => {
         </svg>
 
         {/* Description */}
-        <p className="mt-4 text-[1.75rem] text-content1-foreground">
+        <p className="mt-5 text-body3 text-content1-foreground">
           Professionals in
         </p>
 
-        <p className="text-[1.75rem] font-semibold text-primary-100">
+        <p className="text-body3 font-semibold text-primary-100">
           {workArea ?? "Technology & Engineering"}
         </p>
       </div>
@@ -51,7 +51,7 @@ export const Percentage = ({ onNext }: PercentageProps) => {
       <Button
         buttonText="Continue"
         variant="secondary"
-        textClassName="text-xl text-content1 font-medium"
+        textClassName="text-body5 !text-content1 font-medium"
         baseClassName="!py-7 w-full"
         onClick={onNext}
       />

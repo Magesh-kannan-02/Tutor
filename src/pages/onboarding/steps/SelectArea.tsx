@@ -7,27 +7,19 @@ interface SelectAreaProps {
 }
 
 export const SelectArea = ({ onNext }: SelectAreaProps) => {
-  const {
-    workAreas,
-    workArea,
-    setWorkArea,
-  } = useOnboardingStore();
+  const { workAreas, workArea, setWorkArea } = useOnboardingStore();
 
   const handleSelect = (value: string) => {
     setWorkArea(value);
-
-    setTimeout(() => {
-      onNext?.();
-    }, 250);
+    setTimeout(() => onNext?.(), 250);
   };
 
   return (
-    <div className="flex flex-col items-center gap-7 py-5 px-4">
-      <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[12rem]">
+    <div className="flex flex-col items-center px-4 pt-4 pb-7 gap-7">
+      <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[12rem] leading-8">
         What area do you work in?
       </p>
-
-      <div className="flex flex-col gap-4 w-full pb-16">
+      <div className="flex flex-col gap-4 w-full">
         {workAreas.map((item) => {
           const isActive = workArea === item.label;
 
@@ -54,3 +46,4 @@ export const SelectArea = ({ onNext }: SelectAreaProps) => {
     </div>
   );
 };
+

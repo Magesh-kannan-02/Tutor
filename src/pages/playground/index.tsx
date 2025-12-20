@@ -135,9 +135,9 @@ export const PlayGround = () => {
             icontype="arm"
             iconName="arm"
             title="Grammar’s got a few tricks up its sleeve 😏"
-            titleClassname="text-lg text-content1-foreground font-bold"
+            titleClassname="text-body5 text-content1-foreground font-bold"
             caption="Let’s break them down and fix them fast."
-            captionClassname="text-sm text-medium text-secondary-150"
+            captionClassname="text-h6 text-medium text-secondary-150"
           />
           
           <Playcard
