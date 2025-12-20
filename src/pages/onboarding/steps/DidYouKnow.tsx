@@ -10,11 +10,11 @@ export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
   const { statsValue } = useOnboardingStore();
 
   return (
-    <div className="flex flex-col h-full items-center justify-between py-4 px-4">
+    <div className="flex flex-col h-full items-center justify-between pt-4 pb-2 px-4">
       {/* Center content */}
       <div className="flex flex-col items-center text-center">
         {/* Title */}
-        <p className="text-[1.75rem] font-semibold text-content1-foreground mb-10">
+        <p className="text-body3 font-semibold text-content1-foreground mb-10">
           Did you know?
         </p>
 
@@ -39,7 +39,7 @@ export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
         </p>
 
         {/* Description */}
-        <p className="text-xl text-content1-foreground max-w-[16rem] font-semibold mb-3">
+        <p className="text-body4 text-content1-foreground max-w-[16rem] font-semibold mb-3">
           learners freeze <br /> in real conversations.
         </p>
 
@@ -53,7 +53,7 @@ export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
       <Button
         buttonText="Continue"
         variant="secondary"
-        textClassName="text-xl text-content1 font-medium"
+        textClassName="text-body5 !text-content1 font-medium"
         baseClassName="!py-7 w-full mt-4"
         onClick={onNext}
       />

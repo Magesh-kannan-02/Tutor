@@ -17,14 +17,15 @@ export const SelectLevel = ({ onNext }: SelectLevelProps) => {
   };
 
   return (
-    <div className="flex flex-col h-screen px-4 py-3 overflow-hidden">
-      {/* Header */}
-      <p className="text-[1.75rem] font-semibold text-content1-foreground text-center max-w-[20rem] mb-4 mx-auto">
-        What’s your English level right now?
-      </p>
+    <div className="h-full flex flex-col px-4 py-5">
+      
+      {/*  CONTENT */}
+      <div className="flex-1 overflow-y-auto">
+        <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[20rem] mb-10 mx-auto leading-9">
+          What’s your English level right now?
+        </p>
 
-      <div className="flex-1 min-h-0 overflow-y-auto">
-        <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col gap-4">
           {levels.map((level) => {
             const isActive = englishLevel === level.id;
 
@@ -44,7 +45,8 @@ export const SelectLevel = ({ onNext }: SelectLevelProps) => {
             );
           })}
         </div>
-        <div className="flex items-center justify-end gap-1 pr-10 mt-5">
+
+        <div className="flex items-center justify-end gap-1 pr-10 mt-5 pb-4">
           <img src={diamondImg} alt="diamond" className="w-6" />
           <p className="font-semibold text-content1-foreground">+ 120 XP</p>
         </div>
@@ -52,4 +54,5 @@ export const SelectLevel = ({ onNext }: SelectLevelProps) => {
     </div>
   );
 };
+
 

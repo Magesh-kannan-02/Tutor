@@ -19,12 +19,12 @@ export const SelectGender = ({ onNext }: SelectGenderProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 pb-16 py-5 px-4">
-      <p className="text-[1.75rem] font-semibold text-content1-foreground">
+    <div className="flex flex-col items-center gap-2 pb-16 py-4 px-4">
+      <p className="text-body3 font-semibold text-content1-foreground pb-2">
         What is your gender?
       </p>
 
-      <p className="text-secondary-150 text-sm max-w-[18.5rem] text-center mb-10">
+      <p className="text-secondary-150 text-h6 max-w-[18.5rem] text-center mb-10">
         This helps us personalize your experience.
       </p>
 

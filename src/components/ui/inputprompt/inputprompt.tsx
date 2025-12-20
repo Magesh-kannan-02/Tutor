@@ -104,7 +104,7 @@ export const Inputprompt = ({
       {label && (
         <label
           className={cn(
-            "block mb-3 text-sm text-secondary-150",
+            "block mb-3 text-h6 text-secondary-150",
             labelClassName,
             mainLabelClassName
           )}
@@ -122,7 +122,7 @@ export const Inputprompt = ({
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder}
           className={cn(
-            "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl  h-12 border-[1.5px] text-sm",
+            "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl  h-12 border-[1.5px] text-h6",
             "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-content1-foreground",
             error ? "border-destructive focus-visible:ring-destructive" : "border-content2",
             inputClassName,
@@ -158,7 +158,7 @@ export const Inputprompt = ({
             <div className="mt-4">
               <label
                 className={cn(
-                  "block mb-3 text-sm text-secondary-150",
+                  "block mb-3 text-h6 text-secondary-150",
                   confirmLabelClassName
                 )}
               >
@@ -172,7 +172,7 @@ export const Inputprompt = ({
                   onChange={(e) => onConfirmChange?.(e.target.value)}
                   placeholder="Confirm your password"
                   className={cn(
-                    "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl h-12 border-[1.5px] text-sm",
+                    "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl h-12 border-[1.5px] text-h6",
                     "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-content1-foreground",
                     confirmError
                       ? "border-destructive focus-visible:ring-destructive"
@@ -207,7 +207,7 @@ export const Inputprompt = ({
           {/* STRENGTH */}
           {showStrength && (
             <div className={cn("mt-4", strengthWrapperClassName)}>
-              <div className={cn("text-sm text-secondary-150 mb-2", strengthTitleClassName)}>
+              <div className={cn("text-h6 text-secondary-150 mb-2", strengthTitleClassName)}>
                 Strength
               </div>
 
