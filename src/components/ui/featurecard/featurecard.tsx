@@ -99,7 +99,7 @@ export const Featurecard = ({
 
         <span
           className={cn(
-            "!text-[1.25rem] !text-content1-foreground text-body",
+            "text-body5 !text-content1-foreground ",
             textclassName
           )}
         >

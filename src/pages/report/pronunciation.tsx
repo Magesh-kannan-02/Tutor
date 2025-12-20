@@ -8,7 +8,7 @@ const PronunciationCard = ({ item }: { item: any }) => {
 
   return (
     <div className="flex flex-col gap-[0.813rem]">
-      <p className="font-bold font-sans text-[1rem] text-secondary-150">
+      <p className="font-bold font-sans text-body !text-secondary-150">
         {item?.title}
       </p>
 

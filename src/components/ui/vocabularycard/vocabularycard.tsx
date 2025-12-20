@@ -80,7 +80,7 @@ function Content({
             variant="outline"
             className={cn("", chipClassName)}
             textClassName={cn(
-              "font-sans !font-medium !text-[0.875rem] text-secondary-150",
+              "font-sans !font-medium text-h6 !text-secondary-150",
               chipTextClassName
             )}
           />

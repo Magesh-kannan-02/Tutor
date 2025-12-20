@@ -37,7 +37,7 @@ export const Rating = () => {
       {/* content */}
       <div className="flex flex-col gap-[3.75rem] w-[100%] mt-12">
         <div className="flex flex-col gap-[0.75rem] items-center">
-          <p className="font-semibold  font-sans text-[1.75rem] text-content1-foreground">
+          <p className="font-semibold  font-sans text-body3 !text-content1-foreground">
             Rate your session!
           </p>
           <p className="!text-h6 text-secondary-150">

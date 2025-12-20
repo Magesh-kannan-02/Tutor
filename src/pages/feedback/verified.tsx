@@ -27,7 +27,7 @@ export const Verified = () => {
       {/* Content */}
 
       <div className="flex justify-center items-center flex-col pt-14 ">
-        <p className="text-[1.75rem] font-semibold px-[3rem] text-content1-foreground pb-[2.188rem] text-center leading-tight ">
+        <p className="text-body3 font-semibold px-[3rem] !text-content1-foreground pb-[2.188rem] text-center leading-tight ">
           Verified Successfully!
         </p>
         <TickContent text="You’re all set. Expect your English insights and tips soon." />
@@ -39,7 +39,7 @@ export const Verified = () => {
           buttonText={"Next"}
           variant="secondary"
           onClick={next}
-          textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
+          textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>
     </RootLayout>

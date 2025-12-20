@@ -26,8 +26,8 @@ export const Completion = () => {
 
       {/* Content */}
 
-      <div className="flex justify-center items-center flex-col pt-14 ">
-        <p className="text-[1.75rem] font-semibold px-[3rem] pb-[2rem] text-content1-foreground  text-center leading-tight ">Your English Skills Report is Ready 🎯</p>
+      <div className="flex justify-center  items-center flex-col pt-14 ">
+        <p className="text-body3 font-semibold  pb-[2rem] px-[3rem] text-content1-foreground  text-center leading-tight ">Your English Skills Report is Ready 🎯</p>
         <TickContent  text="Great work!"/>
 
        
@@ -36,10 +36,10 @@ export const Completion = () => {
       {/* Footer */}
       <div className="pt-4 w-full flex flex-col mt-auto gap-[2rem]">
          <Featurecard
-          className="py-[1.063rem] pl-[0.3rem]  pr-[2rem] bg-white/10 
-            backdrop-blur "
+          className="py-[1.063rem] pl-[0.3rem]  pr-[2rem] bg-content1-foreground/10 
+            backdrop-blur   !border-background-50"
           allowendendContent={false}
-          textclassName="!text-[1rem] font-medium text-content1-foreground font-sans"
+          textclassName="text-body leading-[130%] font-medium !text-content1-foreground font-sans"
           textContent="You’ve unlocked a personalized insight into your strengths and focus areas."
         />
         
@@ -47,7 +47,7 @@ export const Completion = () => {
           buttonText={"Continue"}
           variant="secondary"
           onClick={next}
-          textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
+          textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>
     </RootLayout>

@@ -62,7 +62,7 @@ export const Levelcard = ({
       {...rest}
     >
       <div className={cn("flex flex-col gap-[1rem]")}>
-        <p className={cn("!text-[1.25rem] !text-content1-foreground font-sans text-body",titleclassName)}>{title}</p>
+        <p className={cn("text-body5 !text-content1-foreground font-sans",titleclassName)}>{title}</p>
         <p className={cn(" !text-content1-foreground font-sans text-body leading-[140%]",descriptionclassName)}>{description}</p>
       </div>
       <div>

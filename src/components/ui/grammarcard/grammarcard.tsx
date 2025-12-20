@@ -94,7 +94,7 @@ export const GrammarCard = ({
         allowAnimation
         className={cn("mb-[1.563rem]", chipclassName)}
         textClassName={cn(
-          "font-sans !font-medium !text-[0.875rem] text-secondary-150",
+          "font-sans !font-medium text-h6 !text-secondary-150",
           chiptextClassName
         )}
         variant={"outline"}

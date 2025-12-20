@@ -79,7 +79,7 @@ export const Verification = () => {
           variant="secondary"
           onClick={handleVerify}
           disabled={(code?.length || 0) < 4}
-          textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
+          textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>
     </RootLayout>

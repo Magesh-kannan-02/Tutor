@@ -67,7 +67,7 @@ export const PersonalDetails = () => {
           variant="secondary"
           onClick={next}
           disabled={!personalInfo.email || !personalInfo.name}
-          textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
+          textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>
     </RootLayout>

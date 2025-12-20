@@ -9,7 +9,7 @@ export const Vocabulary = () => {
         iconName={vocabularyTitle?.iconType}
         className="px-[1rem] py-2"
         title={vocabularyTitle?.title}
-        titleClassname="text-[1rem] font-sans text-content1-foreground font-bold"
+        titleClassname="text-body font-sans !text-content1-foreground font-bold"
       />
 
       {/* Header */}

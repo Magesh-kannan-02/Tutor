@@ -42,7 +42,7 @@ export const ReportNavbar = ({
       {/* Center Title */}
       <p
         className={cn(
-          "mx-auto font-sans font-semibold text-[1.5rem] text-content1-foreground text-center",
+          "mx-auto font-sans font-semibold text-body4 !text-content1-foreground text-center",
           textclassName
         )}
       >

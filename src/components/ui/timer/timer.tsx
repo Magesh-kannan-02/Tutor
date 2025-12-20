@@ -116,7 +116,7 @@ export const CircularTimer = ({
       {/* TEXT */}
       <div
 
-        className={cn("text-[1.75rem] font-semibold text-content1-foreground font-sans",textClassName)}
+        className={cn("text-body3 font-semibold !text-content1-foreground font-sans",textClassName)}
         style={{
           position: "absolute",
           top: "50%",

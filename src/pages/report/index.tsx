@@ -99,7 +99,7 @@ export const Report = () => {
           buttonText={"Next"}
           variant="secondary"
           onClick={next}
-          textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
+          textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>
     </RootLayout>

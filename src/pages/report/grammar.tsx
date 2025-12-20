@@ -16,7 +16,7 @@ export const Grammar = () => {
       <div className="flex flex-col gap-[1.75rem]">
         {grammarData?.map((section, sectionIndex) => (
           <div key={sectionIndex} className="flex flex-col gap-[1.75rem]" >
-            <p className="font-bold font-sans text-[1rem]  text-secondary-150">
+            <p className="font-bold font-sans text-body !text-secondary-150">
               {section?.category}
             </p>
             <div className="flex flex-col gap-[1rem]">

@@ -13,7 +13,7 @@ export const EmailContent = ({
     <div className="flex flex-col items-center mt-16">
       <img src={EmailImg} alt="email" width={160} height={160} />
       <div className="flex flex-col gap-[0.75rem] px-3">
-        <p className="font-semibold text-[1.75rem] text-content1-foreground text-center ">
+        <p className="font-semibold text-body3 !text-content1-foreground text-center ">
           {text}
         </p>
         <div className="flex flex-col items-center">

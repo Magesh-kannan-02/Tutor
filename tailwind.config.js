@@ -53,6 +53,14 @@ module.exports = {
             fontWeight: "500",
           },
         ],
+        h5: [
+          "1.125rem",
+          {
+            lineHeight: "1",
+            letterSpacing: "0%",
+            fontWeight: "500",
+          },
+        ],
         h6: [
           "0.875rem",
           {
