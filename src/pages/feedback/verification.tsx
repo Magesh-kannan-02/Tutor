@@ -17,7 +17,6 @@ export const Verification = () => {
     (state) => state.updatePersonalInfo
   );
 
-  const [code, setCode] = React.useState(personalInfo.verficationCode ?? "");
   const [timeLeft, setTimeLeft] = React.useState(30);
   React.useEffect(() => {
     if (timeLeft === 0) return;
@@ -28,9 +27,8 @@ export const Verification = () => {
 
     return () => clearInterval(timer);
   }, [timeLeft]);
-
+  const code = useFeedBackStore((state) => state.personalInfo.verficationCode);
   const handleVerify = () => {
-    updatePersonalInfo("verficationCode", code);
     next();
   };
 
@@ -64,11 +62,12 @@ export const Verification = () => {
             placeholder="Enter your Code"
             type="text"
             value={code}
-            onChange={setCode}
+            onChange={(code) => updatePersonalInfo("verficationCode", code)}
           />
 
           <p className="text-h6 font-sans text-secondary-150">
-            Didn’t get it? Resend in  <span>00:{timeLeft.toString().padStart(2, "0")}</span>
+            Didn’t get it? Resend in{" "}
+            <span>00:{timeLeft.toString().padStart(2, "0")}</span>
           </p>
         </div>
       </div>
@@ -79,7 +78,7 @@ export const Verification = () => {
           buttonText="Verify & Continue"
           variant="secondary"
           onClick={handleVerify}
-          disabled={!code}
+          disabled={(code?.length || 0) < 4}
           textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
         />
       </div>

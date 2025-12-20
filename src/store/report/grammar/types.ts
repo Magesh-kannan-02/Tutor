@@ -1,18 +1,24 @@
-export interface GrammarSliceTypes{
-    title: {
+interface GrammarItem {
+  title: string;
+  message: string;
+  explanation: string;
+  label?: string;
+  activelabel?: string;
+}
+export interface GrammarSliceTypes {
+  grammarScore: number;
+  grammardescription: string;
+  grammartitle: {
     iconType: string;
     title: string;
     description: string;
   };
-  data: {
+
+  grammardata: {
+    id: string;
     category: string;
-    cards: {
-      title: string;
-      message: string;
-      explanation: string;
-      label?: string;
-      activelabel?: string;
-    }[];
+    audioUrl?: string;
+    cards: GrammarItem[];
   }[];
 }
-export type GrammarState=GrammarSliceTypes;
+export type GrammarState = GrammarSliceTypes;
