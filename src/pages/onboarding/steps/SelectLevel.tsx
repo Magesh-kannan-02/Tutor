@@ -1,4 +1,4 @@
-import { Levelcard } from "@/components";
+import { Levelcard, RevealOnScroll } from "@/components";
 import { cn } from "@/lib/utils";
 import diamondImg from "@/assets/images/diamond.png";
 import { useOnboardingStore } from "@/store/onboarding";
@@ -21,35 +21,47 @@ export const SelectLevel = ({ onNext }: SelectLevelProps) => {
       
       {/*  CONTENT */}
       <div className="flex-1 overflow-y-auto">
-        <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[20rem] mb-10 mx-auto leading-9">
+        <RevealOnScroll>
+
+        <p className="text-body3 font-semibold text-content1-foreground text-center px-6 mb-10  leading-9">
           What’s your English level right now?
         </p>
+        </RevealOnScroll>
 
         <div className="flex flex-col gap-4">
-          {levels.map((level) => {
+          {levels?.map((level,index) => {
             const isActive = englishLevel === level.id;
 
             return (
-              <Levelcard
+              <RevealOnScroll
                 key={level.id}
-                title={level.label}
-                level={level.id}
-                description={level.description}
-                handleClick={() => handleSelect(level.id)}
-                imgIconClassName="w-16"
-                className={cn(
-                  "cursor-pointer transition-all bg-content1-foreground/15",
-                  isActive && "bg-content1-foreground/30"
-                )}
-              />
+                delay={index * 0.08}
+                y={18}
+              >
+
+                <Levelcard
+                  key={level.id}
+                  title={level.label}
+                  level={level.id}
+                  description={level.description}
+                  handleClick={() => handleSelect(level.id)}
+                  imgIconClassName="w-16"
+                  className={cn(
+                    "cursor-pointer transition-all bg-content1-foreground/15",
+                    isActive && "bg-content1-foreground/30"
+                  )}
+                />
+              </RevealOnScroll>
             );
           })}
         </div>
+      <RevealOnScroll delay={levels.length * 0.08 + 0.1} y={12}>
 
         <div className="flex items-center justify-end gap-1 pr-10 mt-5 pb-4">
           <img src={diamondImg} alt="diamond" className="w-6" />
           <p className="font-semibold text-content1-foreground">+ 120 XP</p>
         </div>
+      </RevealOnScroll>
       </div>
     </div>
   );

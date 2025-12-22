@@ -1,31 +1,29 @@
 import { BackgroundBlur, LeftArrowIcon } from "@/assets";
-import { ProgressBar } from "@/components";
+import { AnimatedScreen, ProgressBar } from "@/components";
 import { RootLayout } from "@/layouts";
 
 import { useFlowStore } from "@/store/flow";
 import { FLOW } from "@/utils/constants";
 import { ONBOARDING_COMPONENTS } from "./onboardingSteps";
 import { useNavigate } from "react-router-dom";
-
-
+import { AnimatePresence, motion } from "framer-motion";
 
 export const Onboarding = () => {
   const navigate = useNavigate();
-  const { stepIndex, pageIndex, next, back } = useFlowStore();
+  const { stepIndex, pageIndex, next, back, direction } = useFlowStore();
 
   const totalPages = FLOW.reduce(
     (sum, step) => sum + (step.pages.length || 1),
     0
   );
 
-  const Back= () => {
-  if (pageIndex > 0) {
-    back();
-  } else {
-    navigate("/select-test");
-  }
-}
-
+  const Back = () => {
+    if (pageIndex > 0) {
+      back();
+    } else {
+      navigate("/select-test");
+    }
+  };
 
   const completedPages =
     FLOW.slice(0, stepIndex).reduce(
@@ -54,23 +52,44 @@ export const Onboarding = () => {
       <div className="relative z-10 w-full  min-h-[100dvh]  flex flex-col">
         {/* Header */}
         {!isLastPage && (
-          <div className="sticky top-0 z-20 flex items-center gap-5 px-4 pt-5 pb-3">
-            <span className="cursor-pointer" onClick={Back}>
-              <LeftArrowIcon />
-            </span>
-            <ProgressBar value={progress} className="flex-1" />
-          </div>
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={`navbar-${CurrentStep?.name}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="w-full"
+            >
+              <div className="sticky top-0 z-20 flex items-center gap-6 px-4 pt-5 pb-3">
+                <span className="cursor-pointer" onClick={Back}>
+                  <LeftArrowIcon />
+                </span>
+                <ProgressBar value={progress} className="flex-1" />
+              </div>
+            </motion.div>
+          </AnimatePresence>
         )}
 
         {/* CONTAINER */}
-        <div className="flex-1 overflow-y-auto 
+        <div
+          className="flex-1 overflow-y-auto 
             [mask-image:linear-gradient(to_bottom,transparent,black_20px,black)]
-            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_00px,black)]">
-          {CurrentStep && <CurrentStep onNext={next} />}
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_00px,black)]"
+        >
+          {CurrentStep && (
+            <AnimatePresence mode="wait">
+              <AnimatedScreen
+                motionKey={`content-${CurrentStep?.name}`}
+                direction={direction}
+                className="w-full h-full"
+              >
+                <CurrentStep onNext={next} />
+              </AnimatedScreen>
+            </AnimatePresence>
+          )}
         </div>
-        
       </div>
     </RootLayout>
   );
 };
-

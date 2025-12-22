@@ -3,6 +3,7 @@ import { CallEndIcon } from "@/assets/CallEndIcon";
 import { Caption, CircularTimer, DrawerComponent } from "@/components";
 import { Avatarcard } from "@/components/atoms/avatarcard/avatarcard";
 import { useOnboardingStore } from "@/store/onboarding";
+import { motion } from "framer-motion";
 
 interface CallProps {
   onNext?: () => void;
@@ -59,8 +60,18 @@ export const Call = ({onNext}:CallProps) => {
   }, [callDrawerCloseIn, isCallDrawerOpen, closeCallDrawer, onNext]);
 
   return (
-    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-5 justify-between">
-      <div className="flex flex-col items-center">
+  <motion.div
+      className="flex flex-col items-center w-full h-full py-5 px-4 gap-5 justify-between"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+     <motion.div
+        className="flex flex-col items-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+      >
         <Avatarcard
           icontype="avatar"
           imageClassname="w-[12rem] h-[7.5rem]"
@@ -76,21 +87,40 @@ export const Call = ({onNext}:CallProps) => {
             ? "Daily Conversation"
             : "Career Training"}
         </p>
-      </div>
+      </motion.div>
 
-      <div className="mt-6">
+       <motion.div
+        className="mt-6"
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.25 }}
+      >
         <CircularTimer duration={180} size={150} strokeWidth={5} />
-      </div>
+      </motion.div>
 
-      <p className="mt-6 text-h6 text-content1-foreground">
+     <motion.p
+        className="mt-6 text-h6 text-content1-foreground"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.35 }}
+      >
         Hey, I’m Harry! How can I help you?
-      </p>
+      </motion.p>
 
-      <div className="mt-16 w-full">
+    <motion.div
+        className="mt-16 w-full"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45 }}
+      >
         <Caption className="bg-content1-foreground/15" />
-      </div>
+      </motion.div>
 
-      <div>
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.55 }}
+      >
         <button
           className="
             mt-auto mb-6
@@ -108,7 +138,7 @@ export const Call = ({onNext}:CallProps) => {
         >
           <CallEndIcon width={35} />
         </button>
-      </div>
+      </motion.div>
 
       <DrawerComponent
         open={isCallDrawerOpen}
@@ -122,7 +152,11 @@ export const Call = ({onNext}:CallProps) => {
         headerClassName="text-body4 text-content1-foreground font-semibold"
         headerContentCalssname="flex-1 text-center"
         content={
-          <div className=" p-4 h-full flex flex-col gap-10 pb-16"  >
+         <motion.div
+            className="p-4 h-full flex flex-col gap-10 pb-16"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
             <p className="mt-6 text-2xl font-bold text-green-400 flex-1">
               I’m working on it!
             </p>
@@ -130,9 +164,9 @@ export const Call = ({onNext}:CallProps) => {
             <p className="text-h6 text-content1-foreground text-center">
               Close in: {formatTime(callDrawerCloseIn)}
             </p>
-          </div>
+          </motion.div>
         }
       />
-    </div>
+    </motion.div>
   );
 };

@@ -1,5 +1,5 @@
 import { BackgroundBlur, Logo } from "@/assets";
-import { Button, Featurecard } from "@/components";
+import { Button, Featurecard, RevealOnScroll } from "@/components";
 import { RootLayout } from "@/layouts";
 import { useSelectTestStore } from "@/store/select-test";
 import { useNavigate } from "react-router-dom";
@@ -40,22 +40,29 @@ export const SelectTest = () => {
         <div className="flex flex-col items-center gap-10 pb-10 w-full">
 
           {/* Title  */}
-          <p className="text-content1-foreground font-black text-body3 max-w-[18.5rem] text-center">
+           <RevealOnScroll>
+
+          <p className="text-content1-foreground font-black text-body3  text-center">
             Pick what you’d like to{" "}
             <span className="text-primary-200">improve</span> first
           </p>
+           </RevealOnScroll>
 
           {/* Feature cards */}
           <div className="flex flex-col gap-5 items-center w-full">
-            {features.map((feature) => (
-              <Featurecard
-                key={feature.id}
-                textContent={feature.textContent}
-                icontype={feature.icontype}
-                isactive={activeFeature === feature.id}
-                activevariant="solid"
-                handleClick={() => setActiveFeature(feature.id)}
-              />
+            {features?.map((feature,i) => (
+                <RevealOnScroll key={feature.id} delay={0.15 + i * 0.05}
+                  y={20}>
+
+                  <Featurecard
+                     
+                    textContent={feature.textContent}
+                    icontype={feature.icontype}
+                    isactive={activeFeature === feature.id}
+                    activevariant="solid"
+                    handleClick={() => setActiveFeature(feature.id)}
+                  />
+                </RevealOnScroll>
             ))}
           </div>
 

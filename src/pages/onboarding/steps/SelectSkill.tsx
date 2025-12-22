@@ -1,4 +1,4 @@
-import { Skillcard, Button } from "@/components";
+import { Skillcard, Button, RevealOnScroll } from "@/components";
 import { useOnboardingStore } from "@/store/onboarding";
 
 interface SelectSkillProps {
@@ -12,21 +12,25 @@ export const SelectSkill = ({ onNext }: SelectSkillProps) => {
     <div className="pt-4 min-h-full flex flex-col">
       <div className="flex-1 px-4">
         <div className="flex flex-col items-center gap-12">
-          <p className="text-body3 font-semibold text-content1-foreground max-w-[17rem] text-center leading-8">
-            What English skill do you want to boost?
-          </p>
+          <RevealOnScroll>
+            <p className="text-body3 font-semibold text-content1-foreground  text-center leading-8">
+              What English skill do you want to boost?
+            </p>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-2 gap-4 w-full auto-rows-fr pb-6">
-            {skills.map((skill) => (
-              <Skillcard
-                key={skill.id}
-                title={skill.title}
-                icontype={skill.icon}
-                imgIconClassName="w-12 h-12"
-                isactive={selectedSkills.includes(skill.id)}
-                handleClick={() => toggleSkill(skill.id)}
-                className="h-full cursor-pointer transition-all bg-content1-foreground/15"
-              />
+            {skills?.map((skill, index) => (
+              <RevealOnScroll key={skill.id} delay={0.15 + index * 0.05} y={20}>
+                <Skillcard
+                  
+                  title={skill.title}
+                  icontype={skill.icon}
+                  imgIconClassName="w-12 h-12"
+                  isactive={selectedSkills.includes(skill.id)}
+                  handleClick={() => toggleSkill(skill.id)}
+                  className="h-full cursor-pointer transition-all bg-content1-foreground/15"
+                />
+              </RevealOnScroll>
             ))}
           </div>
         </div>
@@ -34,9 +38,11 @@ export const SelectSkill = ({ onNext }: SelectSkillProps) => {
 
       {/*FOOTER BUTTON */}
       {selectedSkills.length > 0 && (
-        <div className="sticky bottom-0 bg-background-200 backdrop-blur-md pt-5 pb-2 px-4
+        <div
+          className="sticky bottom-0 bg-background-200 backdrop-blur-md pt-5 pb-2 px-4
             [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
-            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]"
+        >
           <Button
             buttonText="Continue"
             variant="secondary"
@@ -45,8 +51,7 @@ export const SelectSkill = ({ onNext }: SelectSkillProps) => {
             onClick={onNext}
           />
         </div>
-      )}  
+      )}
     </div>
   );
 };
-

@@ -22,7 +22,7 @@ module.exports = {
       },
       fontSize: {
         body3: [
-          "1.75rem",
+          "1.625rem",
           {
             lineHeight: "1",
             letterSpacing: "0%",
@@ -30,7 +30,7 @@ module.exports = {
           },
         ],
         body4: [
-          "1.5rem",
+          "1.375rem",
           {
             lineHeight: "1",
             letterSpacing: "0%",
@@ -38,22 +38,6 @@ module.exports = {
           },
         ],
         body5: [
-          "1.25rem",
-          {
-            lineHeight: "1",
-            letterSpacing: "0%",
-            fontWeight: "500",
-          },
-        ],
-        body: [
-          "1rem",
-          {
-            lineHeight: "1",
-            letterSpacing: "0%",
-            fontWeight: "500",
-          },
-        ],
-        h5: [
           "1.125rem",
           {
             lineHeight: "1",
@@ -61,8 +45,24 @@ module.exports = {
             fontWeight: "500",
           },
         ],
-        h6: [
+        body: [
           "0.875rem",
+          {
+            lineHeight: "1",
+            letterSpacing: "0%",
+            fontWeight: "500",
+          },
+        ],
+        h5: [
+          "1rem",
+          {
+            lineHeight: "1",
+            letterSpacing: "0%",
+            fontWeight: "500",
+          },
+        ],
+        h6: [
+          "0.75rem",
           {
             lineHeight: "1",
             letterSpacing: "0%",

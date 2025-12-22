@@ -1,4 +1,4 @@
-import { Button, Featurecard } from "@/components";
+import { Button, Featurecard, RevealOnScroll } from "@/components";
 import { cn } from "@/lib/utils";
 import { useOnboardingStore } from "@/store/onboarding";
 
@@ -13,33 +13,43 @@ export const SelectTrips = ({ onNext }: SelectTripsProps) => {
     <div>
       <div className="flex-1 overflow-y-auto px-4 pt-4 min-h-[100dvh]">
         <div className="flex flex-col items-center">
+            <RevealOnScroll>
+
           <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[22rem] mb-10 leading-8">
             What trips you up the most in conversations?
           </p>
+            </RevealOnScroll>
 
           <div className="flex flex-col gap-4 pb-6 w-full">
-            {tripOptions.map((item) => {
+            {tripOptions?.map((item,index) => {
               const isActive = selectedTrips.includes(item.label);
 
               return (
-                <Featurecard
+                  <RevealOnScroll
                   key={item.label}
-                  textContent={item.label}
-                  icontype={item.icon}
-                  iconClassName={item.iconClass}
-                  allowendendContent
-                  isactive={isActive}
-                  handleClick={() => toggleTrip(item.label)}
-                  changeIconColor={false}
-                  className={cn(
-                    "py-[1rem] px-[1rem] cursor-pointer transition-all gap-0 bg-content1-foreground/15",
-                    isActive && "bg-content1-foreground/30"
-                  )}
-                  innerclassName="!gap-5"
-                  textclassName="!text-content1-foreground !text-[1rem]"
-                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50 ml-2"
-                  checkboxIndicatorClassName="text-content1-foreground"
-                />
+                  delay={0.15 + index * 0.05}
+                  y={20}
+                >
+                  <Featurecard
+                    
+                    textContent={item.label}
+                    icontype={item.icon}
+                    iconClassName={item.iconClass}
+                    allowendendContent
+                    isactive={isActive}
+                    handleClick={() => toggleTrip(item.label)}
+                    changeIconColor={false}
+                    className={cn(
+                      "py-[1rem] px-[1rem] cursor-pointer transition-all gap-0 bg-content1-foreground/15",
+                      isActive && "bg-content1-foreground/30"
+                    )}
+                    innerclassName="!gap-5"
+                    textclassName="!text-content1-foreground !text-[1rem]"
+                    checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50 ml-2"
+                    checkboxIndicatorClassName="text-content1-foreground"
+                  />
+
+                </RevealOnScroll>
               );
             })}
           </div>

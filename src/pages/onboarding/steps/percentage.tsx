@@ -1,4 +1,4 @@
-import { Button } from "@/components";
+import { Button, RevealOnScroll } from "@/components";
 import { useOnboardingStore } from "@/store/onboarding";
 
 interface PercentageProps {
@@ -11,8 +11,9 @@ export const Percentage = ({ onNext }: PercentageProps) => {
   return (
     <div className="flex flex-col h-full justify-between items-center text-center py-2 px-4">
       {/* Center content */}
-      <div className="flex-1 flex flex-col justify-start items-center">
+      <div className="flex-1 flex flex-col mt-16 justify-start items-center">
         {/* Big outlined percentage */}
+        
         <svg width="100%" height="180" viewBox="0 0 400 180">
           <defs>
             <linearGradient id="strokeGradient" x1="0" y1="0" x2="0" y2="1">
@@ -38,6 +39,8 @@ export const Percentage = ({ onNext }: PercentageProps) => {
         </svg>
 
         {/* Description */}
+        <RevealOnScroll delay={0.2} y={16}>
+
         <p className="mt-5 text-body3 text-content1-foreground">
           Professionals in
         </p>
@@ -45,6 +48,7 @@ export const Percentage = ({ onNext }: PercentageProps) => {
         <p className="text-body3 font-semibold text-primary-100">
           {workArea ?? "Technology & Engineering"}
         </p>
+        </RevealOnScroll>
       </div>
 
       {/* Continue button */}

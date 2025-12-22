@@ -54,6 +54,7 @@ export const RevealOnScroll = ({
         willChange: "transform, opacity",
         transform: "translateZ(0)", 
       }}
+      className="w-full "
     >
       {children}
     </motion.div>

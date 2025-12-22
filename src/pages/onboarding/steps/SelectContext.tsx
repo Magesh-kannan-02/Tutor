@@ -1,4 +1,4 @@
-import { Button, Chip, CircularTimer, Dropdown } from "@/components";
+import { Button, Chip, CircularTimer, Dropdown, RevealOnScroll } from "@/components";
 import aiCallImg from "@/assets/images/aiCall.png";
 import aiCallBlackImg from "@/assets/images/aiCallBlack.png";
 import { cn } from "@/lib/utils";
@@ -23,7 +23,10 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
       
       {/* TOP CONTENT */}
       <div className="flex flex-col items-center gap-5 mt-4">
-        <div className="relative w-24 h-24">
+           <RevealOnScroll >
+        <div className="relative w-24 h-24  place-self-center">
+
+          
           <img
             src={aiCallImg}
             alt="AI"
@@ -35,21 +38,32 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
             className="absolute inset-0 w-full h-full object-contain"
           />
         </div>
+         </RevealOnScroll>
+            <RevealOnScroll delay={0.08} y={14}>
 
         <div className="text-h6 text-secondary-150 font-semibold text-center">
           <p>3 minutes call with AI tutor</p>
           <p>to assess your English in the chosen context</p>
         </div>
+            </RevealOnScroll>
+              <RevealOnScroll delay={0.16} y={14}>
+            <div className="place-self-center pt-4">
 
-        <CircularTimer duration={180} size={150} strokeWidth={5} stop />
+        <CircularTimer  duration={180} size={150} strokeWidth={5} stop />
+            </div>
+              </RevealOnScroll>
       </div>
 
       {/* BOTTOM CONTROLS */}
       <div className="flex flex-col gap-8 w-full mt-auto">
         <div className="flex flex-col gap-4">
+             <RevealOnScroll>
+
           <p className="text-body4 text-content1-foreground text-center font-bold">
             Select your context
           </p>
+             </RevealOnScroll>
+            <RevealOnScroll delay={0.08} y={12}>
 
           <Dropdown
             placeholder="Career Training"
@@ -59,17 +73,21 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
             value={contextCategory}
             onChange={setContextCategory}
           />
+            </RevealOnScroll>
 
           <div className="flex gap-3 overflow-x-auto">
             {contextChips.map((chip, i) => (
-              <Chip
-                key={chip}
-                text={chip}
-                isactive={selectedContext === chip}
-                handleClick={() => setSelectedContext(chip)}
-                allowAnimation
-                className={cn("flex-shrink-0", i === 0 && "ml-4")}
-              />
+             
+
+                <Chip
+                    key={i}
+                  text={chip}
+                  isactive={selectedContext === chip}
+                  handleClick={() => setSelectedContext(chip)}
+                  allowAnimation
+                  className={cn("flex-shrink-0 ", i === 0 && "ml-4")}
+                />
+               
             ))}
           </div>
         </div>
