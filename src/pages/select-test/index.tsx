@@ -10,7 +10,7 @@ export const SelectTest = () => {
     useSelectTestStore();
 
   return (
-    <RootLayout containerClassName="relative h-screen bg-content1 overflow-hidden px-4 py-5 w-full flex flex-col">
+    <RootLayout containerClassName="relative bg-content1 overflow-hidden px-4 py-4 w-full flex flex-col">
       {/* Background */}
       <BackgroundBlur
         size={400}

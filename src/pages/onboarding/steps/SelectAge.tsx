@@ -20,7 +20,7 @@ export const SelectAge = ({ onNext }: SelectAgeProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 px-4 w-full py-4">
+    <div className="flex flex-col items-center gap-2 px-4 w-full py-4 ">
       <p className="text-body3 font-semibold text-content1-foreground pb-2">
         Pick your age group👇
       </p>

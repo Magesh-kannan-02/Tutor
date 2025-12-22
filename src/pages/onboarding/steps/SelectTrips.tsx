@@ -10,10 +10,8 @@ export const SelectTrips = ({ onNext }: SelectTripsProps) => {
   const { tripOptions, selectedTrips, toggleTrip } = useOnboardingStore();
 
   return (
-    <div className="h-full flex flex-col px-4 pt-4">
-      
-      {/*  CONTENT */}
-      <div className="flex-1 overflow-y-auto 2">
+    <div>
+      <div className="flex-1 overflow-y-auto px-4 pt-4 min-h-[100dvh]">
         <div className="flex flex-col items-center">
           <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[22rem] mb-10 leading-8">
             What trips you up the most in conversations?
@@ -39,7 +37,7 @@ export const SelectTrips = ({ onNext }: SelectTripsProps) => {
                   )}
                   innerclassName="!gap-5"
                   textclassName="!text-content1-foreground !text-[1rem]"
-                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50"
+                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50 ml-2"
                   checkboxIndicatorClassName="text-content1-foreground"
                 />
               );
@@ -50,12 +48,14 @@ export const SelectTrips = ({ onNext }: SelectTripsProps) => {
 
       {/* STICKY FOOTER */}
       {selectedTrips.length > 0 && (
-        <div className="sticky bottom-0 bg-background-200 pt-4 pb-2">
+        <div className="sticky bottom-0 bg-background-200 pt-5 pb-2 px-4
+            [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
           <Button
             buttonText="Continue"
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
-            baseClassName="!py-7 w-full"
+            baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
             onClick={onNext}
           />
         </div>

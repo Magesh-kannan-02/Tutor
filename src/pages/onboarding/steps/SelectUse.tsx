@@ -11,7 +11,7 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
     useOnboardingStore();
 
   return (
-    <div className="h-full flex flex-col">
+    <div>
       
       {/* CONTENT */}
       <div className="flex-1 overflow-y-auto">
@@ -44,7 +44,7 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
                   )}
                   innerclassName="!gap-5"
                   textclassName="!text-content1-foreground !text-[1rem]"
-                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50"
+                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50 ml-2"
                   checkboxIndicatorClassName="text-content1-foreground"
                 />
               );
@@ -55,12 +55,14 @@ export const SelectUse = ({ onNext }: SelectUseProps) => {
 
       {/* STICKY FOOTER */}
       {englishUseCases.length > 0 && (
-        <div className="sticky bottom-0 pt-2 pb-2 bg-background-200 backdrop-blur-md px-4">
+        <div className="sticky bottom-0 pt-5 pb-2 bg-background-200 backdrop-blur-md px-4 
+            [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
           <Button
             buttonText="Continue"
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
-            baseClassName="!py-7 w-full"
+            baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
             onClick={onNext}
           />
         </div>

@@ -54,7 +54,7 @@ export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
         buttonText="Continue"
         variant="secondary"
         textClassName="text-body5 !text-content1 font-medium"
-        baseClassName="!py-7 w-full mt-4"
+        baseClassName="!py-7 w-full mt-4 transition-transform duration-300 ease-out active:scale-[0.97]"
         onClick={onNext}
       />
     </div>
