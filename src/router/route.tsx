@@ -24,7 +24,7 @@ export const publicRoutes: Route[] = [
 ];
 
 // Protected pages
-export const privateRoutes = [{ path: ROUTES?.HOME, element: <Home /> }];
+export const privateRoutes = [{ path: ROUTES?.HOME, element: <SelectTest /> }];
 
 // Role-based access
 export const roleRoutes: Record<string, string[]> = {
