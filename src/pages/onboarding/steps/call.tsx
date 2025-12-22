@@ -48,8 +48,18 @@ export const Call = ({onNext}:CallProps) => {
     return () => clearInterval(interval);
   }, [isCallDrawerOpen, tickCallDrawer]);
 
+  /* handle time end */
+  useEffect(() => {
+    if (!isCallDrawerOpen) return;
+
+    if (callDrawerCloseIn <= 0) {
+      closeCallDrawer();
+      onNext?.();
+    }
+  }, [callDrawerCloseIn, isCallDrawerOpen, closeCallDrawer, onNext]);
+
   return (
-    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-7 justify-between">
+    <div className="flex flex-col items-center w-full h-full py-5 px-4 gap-5 justify-between">
       <div className="flex flex-col items-center">
         <Avatarcard
           icontype="avatar"

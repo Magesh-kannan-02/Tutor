@@ -122,7 +122,7 @@ export const Inputprompt = ({
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder}
           className={cn(
-            "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl  h-12 border-[1.5px] text-h6",
+            "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl  h-12 border-[1.5px] text-h6 text-content1-foreground",
             "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-content1-foreground",
             error ? "border-destructive focus-visible:ring-destructive" : "border-content2",
             inputClassName,
@@ -172,7 +172,7 @@ export const Inputprompt = ({
                   onChange={(e) => onConfirmChange?.(e.target.value)}
                   placeholder="Confirm your password"
                   className={cn(
-                    "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl h-12 border-[1.5px] text-h6",
+                    "rounded-xl px-4 py-3 bg-content1-foreground/15 backdrop-blur-2xl h-12 border-[1.5px] text-h6 text-content1-foreground",
                     "focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-content1-foreground",
                     confirmError
                       ? "border-destructive focus-visible:ring-destructive"

@@ -14,10 +14,9 @@ export const SelectDifficulty = ({ onNext }: SelectDifficultyProps) => {
   } = useOnboardingStore();
 
   return (
-    <div className="h-full flex flex-col px-4 pt-5">
-      
+    <div >
       {/*  CONTENT */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto px-4  pt-5">
         <div className="flex flex-col items-center gap-4 ">
           <p className="text-body3 font-semibold text-content1-foreground text-center max-w-[22rem] mb-6 leading-8">
             What makes learning English difficult for you?
@@ -43,7 +42,7 @@ export const SelectDifficulty = ({ onNext }: SelectDifficultyProps) => {
                   )}
                   innerclassName="!gap-5"
                   textclassName="!text-content1-foreground !text-[1rem]"
-                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50"
+                  checkboxClassName="data-[state=checked]:bg-primary-50 data-[state=checked]:border-primary-50 ml-2"
                   checkboxIndicatorClassName="text-content1-foreground"
                 />
               );
@@ -54,12 +53,14 @@ export const SelectDifficulty = ({ onNext }: SelectDifficultyProps) => {
 
       {/* STICKY FOOTER */}
       {difficultyFactors.length > 0 && (
-        <div className="sticky bottom-0 bg-background-200 pt-3 pb-2">
+        <div className="sticky bottom-0 bg-background-200 pt-5 pb-2 px-4
+            [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
           <Button
             buttonText="Continue"
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
-            baseClassName="!py-7 w-full"
+            baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
             onClick={onNext}
           />
         </div>

@@ -74,12 +74,14 @@ export const SelectContext = ({ onNext }: SelectContextProps) => {
           </div>
         </div>
 
-        <div className="px-4 sticky bg-background-200 bottom-0 pt-2 pb-2">
+        <div className="px-4 sticky bg-background-200 bottom-0 pt-4 pb-2 
+            [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
           <Button
             buttonText="Call"
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
-            baseClassName="!py-7 w-full"
+            baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
             onClick={onNext}
           />
         </div>
