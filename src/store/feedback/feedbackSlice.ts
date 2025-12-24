@@ -10,11 +10,26 @@ export const createFeedbackSlice: StateCreator<FeedbackState> = (set) => ({
     verficationCode: "",
     confirm_password: "",
   },
-  
+  isButtonDisabled: false,
+  personalInfoErrors:{
+    name: "",
+    password: "",
+    verficationCode: "",
+    confirm_password: "",
+
+  }
+  ,
 
   updateFeedback: (id: string) => {
     set({ currentfeedbackid: id });
   },
+  updateErrors: (key, value) =>
+    set((state) => ({
+      personalInfoErrors: {
+        ...state.personalInfoErrors,
+        [key]: value,
+      },
+    })),
   updatePersonalInfo: (key, value) =>
     set((state) => ({
       personalInfo: {

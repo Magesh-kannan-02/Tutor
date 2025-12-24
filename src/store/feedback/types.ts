@@ -8,8 +8,14 @@ export interface FeedbackData {
 interface FeedbackSliceTypes {
   currentfeedbackid: string;
   personalInfo: FeedbackData;
+  personalInfoErrors: FeedbackData;
+
   updateFeedback: (feedback: string) => void;
   updatePersonalInfo: <K extends keyof FeedbackData>(
+    key: K,
+    value: FeedbackData[K]
+  ) => void;
+  updateErrors: <K extends keyof FeedbackData>(
     key: K,
     value: FeedbackData[K]
   ) => void;

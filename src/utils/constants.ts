@@ -45,6 +45,8 @@ export const ONBOARDING_PAGES = {
   LEVEL: "level",
   CONTEXT: "context",
   CALL: "call",
+  ONBOARDING_COMPLETION:"onboardingcompletion",
+  STREAK:"streak"
 } as const;
 
 
@@ -68,6 +70,8 @@ export const FLOW = [
       ONBOARDING_PAGES.LEVEL,
       ONBOARDING_PAGES.CONTEXT,
       ONBOARDING_PAGES.CALL,
+      ONBOARDING_PAGES.ONBOARDING_COMPLETION,
+      ONBOARDING_PAGES.STREAK
     ] as const,
   },
   {

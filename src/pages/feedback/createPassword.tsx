@@ -4,7 +4,7 @@ import { Inputprompt } from "@/components";
 import { useFeedBackStore } from "@/store/feedback";
 
 export const CreatePassword = () => {
-  const { personalInfo, updatePersonalInfo } = useFeedBackStore();
+  const { personalInfo, updatePersonalInfo,personalInfoErrors } = useFeedBackStore();
   return (
     <div className="flex flex-col gap-[2rem]  items-center justify-center">
       <Content
@@ -17,11 +17,12 @@ export const CreatePassword = () => {
         label="Password"
         placeholder="Enter password"
         type="password"
+        error={personalInfoErrors.password}
         inputClassName="bg-secondary-250 rounded-[0.5rem]"
         value={personalInfo.password}
         onChange={(value) => updatePersonalInfo("password", value)}
         confirm
-         
+        confirmError={personalInfoErrors.confirm_password}
         confirmValue={personalInfo.confirm_password}
         onConfirmChange={(value) =>
           updatePersonalInfo("confirm_password", value)
