@@ -14,3 +14,5 @@ export { LeftArrowIcon } from './LeftArrowIcon';
 export {ArrowRightIcon} from './arrowRightIcon'
 export {ArrowUpIcon} from './arrowUpIcon'
 export {ArrowLeftIcon} from './arrowLeftIcon'
+export {EditPenIcon} from './editPenIcon'
+export {LockIcon}  from './lockIcon'

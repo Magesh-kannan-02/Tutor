@@ -14,7 +14,7 @@ import VirusImg from "@/assets/images/virus.png";
 import TrophyImg from "@/assets/images/trophy.png";
 import HappyImg from "@/assets/images/smile.png";
 import SmileImg from "@/assets/images/decent.png";
-
+import BadgeImg from "@/assets/images/badge.png";
 import maleImg from "@/assets/images/male.png";
 import thinkImg from "@/assets/images/think.png";
 import writingImg from "@/assets/images/writing.png";
@@ -265,4 +265,8 @@ export const iconMapping: Record<
     type: "image",
     icon: advancedImg,
   },
+  badge:{
+    type:"image",
+    icon:BadgeImg
+  }
 };
