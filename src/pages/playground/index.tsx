@@ -1,4 +1,5 @@
 import {
+
   Button,
   Caption,
   Checkbox,
@@ -21,6 +22,15 @@ import {
   ProfileDetailsCard,
   RewardsDetailsCard,
   SkillOverviewDrawer,
+  BroadProgressBar,
+  SemiCircleProgress,
+  FocusArea,
+  QuickTip,
+  RadarChart,
+  Navbar,
+  Switch,
+  StreakProgressCalendar,
+  SessionCard,
 } from "@/components";
 
 import { Avatarcard } from "@/components/atoms/avatarcard/avatarcard";
@@ -31,10 +41,11 @@ import React, { useState } from "react";
 export const PlayGround = () => {
   const [fruit, setFruit] = React.useState("");
   const [playing, setPlaying] = useState(false);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [open, setOpen] = React.useState(false);
+  const [mode, setMode] = useState<"streak" | "xp">("streak");
   const chipsData = [
     {
       label: "Play your Audio",
@@ -47,7 +58,10 @@ export const PlayGround = () => {
     {
       label: "Pleasant",
       activeLabel: "Enjoyable",
+
+
     },
+
   ];
 
   return (
@@ -63,6 +77,7 @@ export const PlayGround = () => {
         textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
       />
       <Checkbox />
+
 
       <Featurecard
         textContent="Pronunciation"
@@ -177,6 +192,7 @@ export const PlayGround = () => {
         imageClassname="w-[12rem] h-[11rem]"
         className="w-36 h-36 overflow-hidden"
       />
+        <Avatarcard icontype="avatar" imageClassname="w-[12rem] h-[11rem]" className="w-36 h-36 overflow-hidden"/>
 
       <GrammarCard
         title="Use the correct noun form:"
@@ -189,6 +205,7 @@ export const PlayGround = () => {
         word="Good"
         optionalWord="Beneficial Pleasant"
         chips={chipsData}
+         
       />
       <Button
         buttonText="Open Drawer"
@@ -280,6 +297,150 @@ export const PlayGround = () => {
           
        ]}
       />
+      <BroadProgressBar value={40}/>
+      <SemiCircleProgress value={50} 
+      content={
+        <div className="text-content1-foreground">
+          <p>50%</p>
+          <p>high</p>
+        </div>
+      }/>
+      <FocusArea
+        items={[
+          {
+            icontype: 'microphone',
+            iconName: 'MicrophoneIcon',
+            title: "Pronunciation",
+            subtitle: "sound clearer",
+          },
+          {
+            icontype: 'pen',
+            iconName: 'MicrophoneIcon',
+            title: "Grammar",
+            subtitle: "use stronger words",
+          },
+          {
+            icontype: 'vocabulary',
+            iconName: 'MicrophoneIcon',
+            title: "Vocabulary",
+            subtitle: "build better sentences",
+          },
+          {
+            icontype: 'fluency',
+            iconName: 'MicrophoneIcon',
+            title: "Fluency",
+            subtitle: "speak smoothly",
+          },
+        ]}
+      />
+      <QuickTip
+        icontype="snail"
+        iconName="snail tip"
+        description={
+          <>Instead of saying <span className="text-primary-200">‘very good’</span>, try <span className="text-primary-200">‘excellent’</span>.</>
+        }
+      />
+
+      <div className="w-full max-w-[400px] h-[350px]">
+        <RadarChart/>
+      </div>
+
+      <Navbar
+        defaultActive="home"
+        items={[
+          {
+            key: "home",
+            label: "Home",
+            icontype: "home",
+          },
+          {
+            key: "practice",
+            label: "Practice",
+            icontype: "microphone",
+          },
+          {
+            key: "profile",
+            label: "Profile",
+            icontype: "profile",
+          },
+        ]}
+        onChange={(key) => console.log("Active:", key)}
+      />
+
+      <Switch
+        options={[
+          { label: "Streak", value: "streak" },
+          { label: "XP", value: "xp" },
+        ]}
+        value={mode}
+        onValueChange={setMode}
+      />
+
+      <StreakProgressCalendar
+        title="🔥 Your Streak Progress"
+        subtitle="Current streak"
+        streak= '01'
+        iconType="fire"
+        grid={[
+          [
+            { id: "1", active: true },
+            { id: "2" },
+            { id: "3" },
+            { id: "4" },
+            { id: "5" },
+            { id: "6" },
+            { id: "7" },
+          ],
+          [
+            { id: "8" },
+            { id: "9" },
+            { id: "10" },
+            { id: "11" },
+            { id: "12" },
+            { id: "13" },
+            { id: "14" },
+          ],
+          [
+            { id: "15" },
+            { id: "16" },
+            { id: "17" },
+            { id: "18" },
+            { id: "19" },
+            { id: "20" },
+            { id: "21" },
+          ],
+          [
+            { id: "22" },
+            { id: "23" },
+            { id: "24" },
+            { id: "25" },
+            { id: "26" },
+            { id: "27" },
+            { id: "28" },
+          ],
+          [
+            { id: "29" },
+            { id: "30" },
+            { id: "31" },
+            { id: "32" },
+            { id: "33" },
+            { id: "34" },
+            { id: "35" },
+          ],
+        ]}
+      />
+
+      <SessionCard
+        subtitle="Career Chat — Tour Guide"
+        feedback="Great clarity, work on pacing."
+        icontype="microphone"
+        handleleftclick={() => console.log("Try Again")}
+        handlerightclick={() => console.log("View Report")}
+        leftButtonValue="Try Again"
+        rightButtonValue="View Report"
+      />
+      
+
     </div>
   );
 };

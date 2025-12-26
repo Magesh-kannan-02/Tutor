@@ -1,4 +1,4 @@
-import { MicrophoneIcon } from "@/assets";
+import { HomeIcon, MicrophoneIcon, ProfileIcon } from "@/assets";
 import { PlayIcon } from "@/assets";
 import { SoundIcon } from "@/assets";
 import { FluencyIcon } from "@/assets";
@@ -51,6 +51,7 @@ import intermediateImg from "@/assets/images/intermediate.png";
 import upperIntermediateImg from "@/assets/images/upperIntermediate.png";
 import advancedImg from "@/assets/images/advanced.png";
 
+import FireImg from '@/assets/images/fire.png';
 export type SVGIcon = React.ComponentType<{
   fill?: string;
   className?: string;
@@ -265,8 +266,23 @@ export const iconMapping: Record<
     type: "image",
     icon: advancedImg,
   },
+<<<<<<< HEAD
   badge:{
     type:"image",
     icon:BadgeImg
   }
+=======
+  home:{
+      type:'svg',
+      icon: HomeIcon
+    },
+    profile:{
+      type:'svg',
+      icon: ProfileIcon
+    },
+    fire:{
+      type:'image',
+      icon: FireImg
+    }
+>>>>>>> f4a40dbee0417821edf06bbbbbdfc709b027bfa8
 };
