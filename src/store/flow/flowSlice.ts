@@ -5,8 +5,12 @@ import { FLOW, type PageKey, type StepKey } from "@/utils/constants";
 export const createFlowSlice: StateCreator<FlowState> = (set, get) => ({
   stepIndex: 0,
   pageIndex: 0,
+  direction:"forward",
 
   next: () => {
+    console.log(get().pageIndex, get().stepIndex);
+     set({direction:"forward"})
+    
     const { stepIndex, pageIndex } = get();
     const step = FLOW[stepIndex];
 
@@ -22,6 +26,7 @@ export const createFlowSlice: StateCreator<FlowState> = (set, get) => ({
 
   back: () => {
     const { stepIndex, pageIndex } = get();
+      set({direction:"back"})
 
     if (stepIndex === 0 && pageIndex === 0) return;
 
@@ -37,19 +42,24 @@ export const createFlowSlice: StateCreator<FlowState> = (set, get) => ({
     });
   },
 
- goTo: <T extends StepKey>(stepKey: T, pageKey?: PageKey<T>) => {
-  const stepIndex = FLOW.findIndex((s) => s.key === stepKey);
-  if (stepIndex === -1) return;
+  goTo: <T extends StepKey>(stepKey: T, pageKey?: PageKey<T>) => {
+    const stepIndex = FLOW.findIndex((s) => s.key === stepKey);
+    if (stepIndex === -1) return;
 
-  const step = FLOW[stepIndex];
-  const pageIndex = pageKey ? step.pages.indexOf(pageKey as never) : 0;
+    const step = FLOW[stepIndex];
+    const pageIndex = pageKey ? step.pages.indexOf(pageKey as never) : 0;
 
-  set({
-    stepIndex,
-    pageIndex,
-  });
-},
+    set({
+      stepIndex,
+      pageIndex,
+    });
+  },
+  getCurrentStep: () => FLOW[get().stepIndex].key,
 
+  getCurrentPage: () => {
+    const { stepIndex, pageIndex } = get();
+    return FLOW[stepIndex]?.pages[pageIndex];
+  },
 
   reset: () => set({ stepIndex: 0, pageIndex: 0 }),
 });

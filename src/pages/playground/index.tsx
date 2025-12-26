@@ -28,6 +28,7 @@ import {
   StreakProgressCalendar,
   SessionCard,
 } from "@/components";
+
 import { Avatarcard } from "@/components/atoms/avatarcard/avatarcard";
 import { Playcard } from "@/components/ui/playcard/playcard";
 
@@ -143,9 +144,9 @@ export const PlayGround = () => {
         icontype="arm"
         iconName="arm"
         title="Grammar’s got a few tricks up its sleeve 😏"
-        titleClassname="text-lg text-content1-foreground font-bold"
+        titleClassname="text-body5 text-content1-foreground font-bold"
         caption="Let’s break them down and fix them fast."
-        captionClassname="text-sm text-medium text-secondary-150"
+        captionClassname="text-h6 text-medium text-secondary-150"
       />
 
       <Playcard
@@ -190,7 +191,7 @@ export const PlayGround = () => {
         title="Use the correct noun form:"
         message="I’m Working on it!"
         explanation="You can count apps or websites, but not software.Think of “software” as a whole category, not separate items."
-        className="!bg-[#382F11] "
+         
       />
       <VocabularyCard
         value="a1-good"
@@ -198,7 +199,7 @@ export const PlayGround = () => {
         word="Good"
         optionalWord="Beneficial Pleasant"
         chips={chipsData}
-        className="!bg-[#360F34]"
+         
       />
       <Button
         buttonText="Open Drawer"
@@ -258,7 +259,9 @@ export const PlayGround = () => {
         }
       />
 
-      <RadarChart/>
+      <div className="w-full max-w-[400px] h-[350px]">
+        <RadarChart/>
+      </div>
 
       <Navbar
         defaultActive="home"

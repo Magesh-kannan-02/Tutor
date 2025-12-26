@@ -13,6 +13,7 @@ interface WordscardProps {
 
   onClick?: () => void;  
   iconPosition?: "start" | "end";  
+  isAnimation?:boolean;
 }
 
 export const Playcard = ({
@@ -24,7 +25,8 @@ export const Playcard = ({
   imageClassname,
   iconName = "",
   onClick,
-  iconPosition = "end",            
+  iconPosition = "end",  
+  isAnimation = true          
 }: WordscardProps) => {
 
   const Icon = icontype ? iconMapping[icontype] : null;
@@ -50,6 +52,7 @@ export const Playcard = ({
         "w-full rounded-xl px-5 py-3",
         "bg-transparent border border-content2 backdrop-blur-2xl",
         "flex items-center",
+        isAnimation && "transition-transform duration-150 ease-out active:scale-[0.97]",
         className
       )}
     >
@@ -63,7 +66,7 @@ export const Playcard = ({
         {/* TITLE */}
         <div className="flex-1 min-w-0">
           <div
-            className={cn("truncate text-sm text-content1-foreground", titleClassname)}
+            className={cn("truncate text-h6 text-content1-foreground", titleClassname)}
           >
             {title}
           </div>

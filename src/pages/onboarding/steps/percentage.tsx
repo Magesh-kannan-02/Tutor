@@ -1,0 +1,64 @@
+import { Button, RevealOnScroll } from "@/components";
+import { useOnboardingStore } from "@/store/onboarding";
+
+interface PercentageProps {
+  onNext?: () => void;
+}
+
+export const Percentage = ({ onNext }: PercentageProps) => {
+  const { percentage, workArea } = useOnboardingStore();
+
+  return (
+    <div className="flex flex-col h-full justify-between items-center text-center py-2 px-4">
+      {/* Center content */}
+      <div className="flex-1 flex flex-col mt-16 justify-start items-center">
+        {/* Big outlined percentage */}
+        
+        <svg width="100%" height="180" viewBox="0 0 400 180">
+          <defs>
+            <linearGradient id="strokeGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="100%" stopColor="#010101" />
+            </linearGradient>
+          </defs>
+
+          <text
+            x="50%"
+            y="75%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            fill="transparent"
+            stroke="url(#strokeGradient)"
+            strokeWidth="1"
+            fontSize="160"
+            fontWeight="900"
+            fontFamily="DM Sans"
+          >
+            {percentage}%
+          </text>
+        </svg>
+
+        {/* Description */}
+        <RevealOnScroll delay={0.2} y={16}>
+
+        <p className="mt-5 text-body3 text-content1-foreground">
+          Professionals in
+        </p>
+
+        <p className="text-body3 font-semibold text-primary-100">
+          {workArea ?? "Technology & Engineering"}
+        </p>
+        </RevealOnScroll>
+      </div>
+
+      {/* Continue button */}
+      <Button
+        buttonText="Continue"
+        variant="secondary"
+        textClassName="text-body5 !text-content1 font-medium"
+        baseClassName="!py-7 w-full transition-transform duration-300 ease-out active:scale-[0.97]"
+        onClick={onNext}
+      />
+    </div>
+  );
+};

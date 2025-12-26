@@ -31,9 +31,9 @@ export const Caption = ({
     },className)} {...rest}>
         <div className="flex items-center gap-x-[0.75rem]">
              <CaptionIcon />
-            <p className={cn("font-sans !text-[0.875rem] font-medium !text-content1-foreground",textClassName)}>{title}</p>
+            <p className={cn("font-sans text-h6 font-medium !text-content1-foreground",textClassName)}>{title}</p>
         </div>
-        <p className="font-sans !text-[0.875rem] font-medium !text-content1-foreground">{status?'On':'Off'}</p>
+        <p className="font-sans text-h6 font-medium !text-content1-foreground">{status?'On':'Off'}</p>
          
     </Card>
   )

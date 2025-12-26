@@ -1,0 +1,78 @@
+import bigGraph from "@/assets/images/bigGraph.png";
+import { Button, RevealOnScroll } from "@/components";
+import { useOnboardingStore } from "@/store/onboarding";
+
+interface DidYouKnowProps {
+  onNext?: () => void;
+}
+
+export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
+  const { statsValue } = useOnboardingStore();
+
+  return (
+    <div className="flex flex-col h-full items-center justify-between pt-4 pb-2 px-4">
+      {/* Center content */}
+      <div className="flex flex-col items-center text-center">
+        {/* Title */}
+         <RevealOnScroll>
+
+        <p className="text-body3 font-semibold text-content1-foreground mb-10">
+          Did you know?
+        </p>
+         </RevealOnScroll>
+
+        {/* Graph Icon */}
+         <RevealOnScroll delay={0.1}  >
+
+        <img
+          src={bigGraph}
+          alt="Graph"
+          className="w-36 h-36 mb-10 flex place-self-center"
+        />
+         </RevealOnScroll>
+
+        {/* Big outlined text */}
+          <RevealOnScroll delay={0.2}>
+
+        <p
+          className="text-6xl font-black leading-[1] bg-transparent text-center pb-4"
+          style={{
+            WebkitTextStroke: "2px transparent",
+            backgroundImage: "linear-gradient(180deg, #FFFFFF 0%, #010101 80%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+          }}
+        >
+          {statsValue} out of 10
+        </p>
+          </RevealOnScroll>
+
+        {/* Description */}
+         <RevealOnScroll delay={0.3} y={16}>
+
+        <p className="text-body4 text-content1-foreground text-centerfont-semibold mb-3">
+          learners freeze <br /> in real conversations.
+        </p>
+         </RevealOnScroll>
+
+        {/* Highlight */}
+        <RevealOnScroll delay={0.4} y={16}>
+
+        <p className="text-[1.40rem] font-bold text-primary-200 mt-3 mb-16">
+          That’s normal and fixable.
+        </p>
+        </RevealOnScroll>
+      </div>
+
+      {/* Continue button */}
+      
+      <Button
+        buttonText="Continue"
+        variant="secondary"
+        textClassName="text-body5 !text-content1 font-medium"
+        baseClassName="!py-7 w-full mt-4 transition-transform duration-300 ease-out active:scale-[0.97]"
+        onClick={onNext}
+      />
+    </div>
+  );
+};

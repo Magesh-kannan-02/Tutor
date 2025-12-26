@@ -11,7 +11,7 @@ interface LevelcardProps {
   descriptionclassName?: string; // description class name
   title?: string; // title text
   description?: string; // description text
-  level?: 'beginner' | 'intermediate' | 'advanced' | 'upper-intermediate'; // level type
+  level?: 'beginner' | 'intermediate' | 'advanced' | 'upperIntermediate'; // level type
   isactive?:boolean // active state
   icon?:React.ReactNode
   activevariant?: 'default' // active variants when it is active
@@ -62,7 +62,7 @@ export const Levelcard = ({
       {...rest}
     >
       <div className={cn("flex flex-col gap-[1rem]")}>
-        <p className={cn("!text-[1.25rem] !text-content1-foreground font-sans text-body",titleclassName)}>{title}</p>
+        <p className={cn("text-body5 !text-content1-foreground font-sans",titleclassName)}>{title}</p>
         <p className={cn(" !text-content1-foreground font-sans text-body leading-[140%]",descriptionclassName)}>{description}</p>
       </div>
       <div>

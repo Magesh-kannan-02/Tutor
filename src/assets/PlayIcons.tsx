@@ -1,15 +1,17 @@
 import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
+  width?: number;
+  height?: number;
+  color?: string;
   className?: string;
 }
 
 export const PlayIcon: React.FC<IconProps> = ({
-  className,
   width = 13,
   height = 14,
   fill = "white",
-  ...props
+  className = "",...props
 }) => {
   return (
     <svg

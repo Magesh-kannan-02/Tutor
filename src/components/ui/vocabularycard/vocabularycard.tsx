@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRightIcon, ArrowUpIcon, PlayIcon } from "@/assets";
+import { ArrowRightIcon, ArrowUpIcon, PlayIcon, SoundIcon } from "@/assets";
 import { AccordionComponent, Chip } from "@/components";
 import { cn } from "@/lib/utils";
 
@@ -43,14 +43,14 @@ interface ContentProps {
 
 function Trigger({ level, word, optionalWord, className }: TriggerProps) {
   return (
-    <div className={cn("grid grid-cols-5 items-center", className)}>
+    <div className={cn("grid grid-cols-5 items-center w-[90%]", className)}>
       <p className="col-span-1 text-h6 !text-content1-foreground leading-normal ">
         {level}
       </p>
-      <p className="col-span-1 text-h6 !text-content1-foreground leading-normal">
+      <p className="col-span-2 text-h6 !text-content1-foreground pl-2 leading-normal">
         {word}
       </p>
-      <p className="col-span-1 text-h6 !text-content1-foreground leading-normal text-start col-start-4 items-center ">
+      <p className="col-span-1 text-h6 !text-content1-foreground pl-4 leading-normal text-start  items-center">
         {optionalWord}
       </p>
     </div>
@@ -73,7 +73,7 @@ function Content({
         return (
           <Chip
             key={index}
-            startContent={isActive ? <PlayIcon /> : <PlayIcon />}
+            startContent={isActive ? <SoundIcon />: <PlayIcon />}
             text={isActive ? chip.activeLabel : chip.label}
             handleClick={() => onChipClick(index)}
             allowAnimation

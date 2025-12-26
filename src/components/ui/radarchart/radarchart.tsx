@@ -4,7 +4,6 @@ import {
   PointElement,
   LineElement,
   Filler,
-  Tooltip,
   type ChartOptions,
   type Plugin,
   type Chart,
@@ -12,13 +11,23 @@ import {
   type ScriptableContext,
 } from "chart.js"
 import { Radar } from "react-chartjs-2"
+import { useMemo } from "react"
+
+export interface RadarChartProps {
+  data?: number[]
+  labels?: string[]
+  height?: string
+  width?: string
+  className?: string
+  options?: ChartOptions<"radar">
+  labelOffsets?: { x: number; y: number }[]
+}
 
 ChartJS.register(
   RadialLinearScale,
   PointElement,
   LineElement,
   Filler,
-  Tooltip
 )
 
 const roundedGridPlugin: Plugin<"radar"> = {
@@ -46,11 +55,11 @@ const roundedGridPlugin: Plugin<"radar"> = {
       const isOuter = index === ticks.length - 1
 
       if (isOuter) {
-        ctx.strokeStyle = "#C0C0C0"
-        ctx.lineWidth = 1
+        ctx.strokeStyle = "#686868"
+        ctx.lineWidth = 0.5
       } else {
-        ctx.strokeStyle = "#C0C0C0"
-        ctx.lineWidth = 1 // Thicker inner grid lines
+        ctx.strokeStyle = "#686868"
+        ctx.lineWidth = 0.5 // Thicker inner grid lines
       }
 
       const positions = []
@@ -85,6 +94,80 @@ const roundedGridPlugin: Plugin<"radar"> = {
   },
 }
 
+const gridBackgroundPlugin: Plugin<"radar"> = {
+  id: "gridBackgroundPlugin",
+  beforeDraw(chart: Chart<"radar">) {
+    const { ctx, scales: { r } } = chart
+    const scale = r as Scale & { getLabels: () => string[]; getDistanceFromCenterForValue: (v: number) => number; getPointPosition: (i: number, d: number) => { x: number; y: number } }
+
+    if (!scale) return
+
+    const numPoints = scale.getLabels().length
+    const ticks = scale.ticks
+    const cornerRadius = 26
+
+    ctx.save()
+
+    // Helper to trace a rounded path
+    const traceRoundedPath = (positions: { x: number; y: number }[]) => {
+      if (positions.length < 3) return
+      const first = positions[0]
+      const last = positions[positions.length - 1]
+      const startX = (last.x + first.x) / 2
+      const startY = (last.y + first.y) / 2
+
+      ctx.moveTo(startX, startY)
+
+      for (let i = 0; i < numPoints; i++) {
+        const p = positions[i]
+        const next = positions[(i + 1) % numPoints]
+        ctx.arcTo(p.x, p.y, next.x, next.y, cornerRadius)
+      }
+    }
+
+    // Iterate through ticks to create bands
+    // key: 0->25 (Band 1), 25->50 (Band 2), 50->75 (Band 3), 75->100 (Band 4)
+    // Ticks usually: [0, 25, 50, 75, 100]
+    // We want to fill Band 1 (0-25) and Band 3 (50-75) with light color
+    // This corresponds to index 1 (value 25) and index 3 (value 75) in the loop if we start from 1
+
+    for (let i = 1; i < ticks.length; i++) {
+      const outerTick = ticks[i]
+      const innerTick = ticks[i - 1]
+
+      const outerDistance = scale.getDistanceFromCenterForValue(outerTick.value)
+      const innerDistance = scale.getDistanceFromCenterForValue(innerTick.value)
+
+      const outerPositions = []
+      const innerPositions = []
+
+      for (let j = 0; j < numPoints; j++) {
+        outerPositions.push(scale.getPointPosition(j, outerDistance))
+        innerPositions.push(scale.getPointPosition(j, innerDistance))
+      }
+
+      ctx.beginPath()
+      
+      // Trace Outer (Clockwise)
+      traceRoundedPath(outerPositions)
+      
+      // Trace Inner (Counter-Clockwise) if not center
+      if (innerTick.value > 0) {
+          // Reverse positions for CCW winding
+          // Note: traceRoundedPath logic uses (i+1)%numPoints for 'next'. 
+          // Reversing the array makes it trace in reverse order.
+          traceRoundedPath([...innerPositions].reverse())
+      }
+
+      ctx.closePath()
+      ctx.fillStyle = "rgba(255, 255, 255, 0.15)" 
+      ctx.fill()
+    }
+
+    ctx.restore()
+  },
+}
+
 const customLabelsPlugin: Plugin<"radar"> = {
   id: "customLabelsPlugin",
   afterDraw(chart: Chart<"radar">) {
@@ -93,8 +176,7 @@ const customLabelsPlugin: Plugin<"radar"> = {
 
     const simpleScale = r as Scale & { getDistanceFromCenterForValue: (v: number) => number; getPointPosition: (i: number, d: number) => { x: number; y: number } };
     const outerDistance = simpleScale.getDistanceFromCenterForValue(simpleScale.max);
-    // We add some padding for the labels
-    const labelDistance = outerDistance + 25;
+
 
     ctx.save();
     ctx.textAlign = "center";
@@ -104,36 +186,59 @@ const customLabelsPlugin: Plugin<"radar"> = {
     const labels = chart.data.labels as string[];
 
     labels.forEach((label, index) => {
-      const point = simpleScale.getPointPosition(index, labelDistance);
+      // Base point on the outer edge
+      const point = simpleScale.getPointPosition(index, outerDistance);
+      
+      // Manual X/Y nudges per index
+      // @ts-expect-error - Custom plugin options are not typed in Chart.js types
+      const offsets = chart.options.plugins?.customLabelsPlugin?.offsets || [];
+      const offset = offsets[index] || { x: 0, y: 0 };
+      
+      const xOffset = offset.x;
+      const yOffset = offset.y;
+
+      const finalX = point.x + xOffset;
+      const finalY = point.y + yOffset;
+
       const value = dataValues[index];
 
+      const fontFamily = window.getComputedStyle(document.body).fontFamily || "'DM Sans', sans-serif";
       // Draw Value (Green, Bold)
-      ctx.font = "bold 20px sans-serif";
+      ctx.font = `700 20px ${fontFamily}`;
       ctx.fillStyle = "#B8FF5F";
-      ctx.fillText(`${value}%`, point.x, point.y - 15);
+      ctx.fillText(`${value}%`, finalX, finalY - 15);
 
       // Draw Label (Grey, Regular)
-      ctx.font = "500 16px sans-serif";
+      ctx.font = `500 16px ${fontFamily}`;
       ctx.fillStyle = "#C0C0C0";
-      ctx.fillText(label, point.x, point.y + 10);
+      ctx.fillText(label, finalX, finalY + 10);
     })
 
     ctx.restore();
   },
 }
 
-export const RadarChart = ({ ...rest }) => {
-  const data = {
-    labels: [
-      "Speaking ",
-      "Writing ",
-      "Grammar/Vocab",
-      "Listening ",
-      "Reading "
-    ],
+export const RadarChart = ({ 
+  data: dataProp = [75, 50, 70, 45, 85], 
+  labels: labelsProp = ["Speaking ", "Writing ", "Grammar/Vocab", "Listening ", "Reading "], 
+  height = "100%", 
+  width = "100%", 
+  className,
+  options: optionsProp,
+  labelOffsets = [
+    { x: 0, y: -20 },   // Top (Speaking)
+    { x: 25, y: -30 },  // Top Right (Writing)
+    { x: 45, y: 15 },   // Bottom Right (Grammar/Vocab)
+    { x: -45, y: 15 },  // Bottom Left (Listening)
+    { x: -25, y: -30 }  // Top Left (Reading)
+  ],
+  ...rest 
+}: RadarChartProps) => {
+  const data = useMemo(() => ({
+    labels: labelsProp,
     datasets: [
       {
-        data: [75, 50, 70, 45, 85],
+        data: dataProp,
 
         fill: true,
 
@@ -174,11 +279,9 @@ export const RadarChart = ({ ...rest }) => {
         pointHoverRadius: 6,
       },
     ]
+  }), [dataProp, labelsProp])
 
-
-  }
-
-  const options: ChartOptions<"radar"> = {
+  const options: ChartOptions<"radar"> = useMemo(() => ({
     responsive: true,
     maintainAspectRatio: false,
     layout: {
@@ -197,6 +300,7 @@ export const RadarChart = ({ ...rest }) => {
         },
         grid: {
           display: false,
+
         },
         pointLabels: {
           display: false, // Hide default labels
@@ -207,27 +311,20 @@ export const RadarChart = ({ ...rest }) => {
       legend: {
         display: false,
       },
-      tooltip: {
-        backgroundColor: "#0f0f0f",
-        titleColor: "#B8FF5F",
-        bodyColor: "#ffffff",
-        padding: 10,
-        callbacks: {
-          title: (items) => {
-            const index = items[0].dataIndex;
-            return data.labels[index].split(' ')[0]; // Just show "Speaking" in tooltip title
-          }
-        }
-      },
+      // Pass offsets to the plugin via options
+      customLabelsPlugin: {
+        offsets: labelOffsets
+      }
     },
-  }
+    ...optionsProp,
+  }), [optionsProp, labelOffsets])
 
   return (
-    <div style={{ height: "350px", width: "400px", backgroundColor: "#0f0f0f" }} {...rest}>
+    <div style={{ height, width }} className={className} {...rest}>
       <Radar
         data={data}
         options={options}
-        plugins={[roundedGridPlugin, customLabelsPlugin]}
+        plugins={[gridBackgroundPlugin, roundedGridPlugin, customLabelsPlugin]}
       />
     </div>
   )
