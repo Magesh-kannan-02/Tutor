@@ -24,16 +24,16 @@ export const ViewReport = () => {
           <RadarChart className="!p-0 m-0" />
         </div>
       </RevealOnScroll>
-      <RevealOnScroll delay={0.3} y={20}>
         <div className="mt-auto mb-[1rem]">
+      <RevealOnScroll delay={0.3} y={20} >
           <Featurecard
             className="bg-content1-foreground/15 backdrop-blur pl-0  py-[1rem] !border-background-50"
             allowendendContent={false}
             textclassName="text-body leading-[130%] font-medium !text-content1-foreground font-sans"
             textContent="Your score is based on 01 mins of real conversation. Keep speaking to get more accurate insights!"
           />
-        </div>
       </RevealOnScroll>
+        </div>
     </div>
   );
 };
