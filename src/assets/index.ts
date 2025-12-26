@@ -1,6 +1,6 @@
 export { MicrophoneIcon } from "./MicrophoneIcon";
 export { CaptionIcon } from "./CaptionIcon";
-export { CloseIcon } from './closeIcon';
+export { CloseIcon } from './CloseIcons';
 export { PlayIcon } from './PlayIcons';
 export { SoundIcon } from './SoundIcon';
 export { EyeOffIcon } from './EyeOffIcon';
