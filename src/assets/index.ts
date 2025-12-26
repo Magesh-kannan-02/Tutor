@@ -11,4 +11,7 @@ export { PenIcon } from './PenIcon';
 export { VocabularyIcon } from './VocabularyIcon';
 export { FluencyIcon } from './FluencyIcon';
 export {ArrowRightIcon} from './arrowRightIcon'
-export {ArrowUpIcon} from './arrowUpIcon'
+export {ArrowUpIcon} from './arrowUpIcon';
+export {ProgressBarLine} from './progressBarLine';
+export {HomeIcon} from './homeIcon';
+export {ProfileIcon} from './profileIcon';
