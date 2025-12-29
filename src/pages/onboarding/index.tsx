@@ -34,7 +34,7 @@ export const Onboarding = () => {
   const progress = (completedPages / totalPages) * 100;
 
   const CurrentStep = ONBOARDING_COMPONENTS[pageIndex] ?? null;
-  const isLastPage = pageIndex === ONBOARDING_COMPONENTS.length ;
+  const isLastPage = pageIndex === ONBOARDING_COMPONENTS.length -1;
 
   return (
     <RootLayout containerClassName="relative  min-h-[100dvh]  bg-content1 overflow-hidden">
@@ -51,7 +51,7 @@ export const Onboarding = () => {
 
       <div className="relative z-10 w-full  min-h-[100dvh]  flex flex-col">
         {/* Header */}
-        {!isLastPage && (
+        {!isLastPage && pageIndex !== 14 && (
           <AnimatePresence mode="popLayout">
             <motion.div
               key={`navbar-${CurrentStep?.name}`}

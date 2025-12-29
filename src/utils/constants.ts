@@ -48,6 +48,7 @@ export const ONBOARDING_PAGES = {
   GOAL:"goal",
   CORRECTION:"correction",
   FLUENTLY:"fluently",
+  READY:"ready"
 } as const;
 
 
@@ -75,7 +76,8 @@ export const FLOW = [
       ONBOARDING_PAGES.LEVELUP,
       ONBOARDING_PAGES.GOAL,
       ONBOARDING_PAGES.CORRECTION,
-      ONBOARDING_PAGES.FLUENTLY
+      ONBOARDING_PAGES.FLUENTLY,
+      ONBOARDING_PAGES.READY
     ] as const,
   },
   {

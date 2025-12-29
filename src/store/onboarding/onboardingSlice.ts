@@ -13,6 +13,8 @@ import type {
   FeelOptionItem,
 } from "./types";
 
+import upperIntermediateImg from "@/assets/images/upperIntermediate.png";
+
 /* ================= MOCK DATA ================= */
 
 const initialMockData = {
@@ -165,10 +167,10 @@ const initialState: OnboardingState = {
   levelAnalysisData: {
     levelName: "Upper-Intermediate",
     levelGrade: "B1",
-    levelImage: "@/assets/images/upperIntermediate.png",
+    levelImage: upperIntermediateImg,
     radarData: [75, 50, 70, 45, 85],
     radarLabels: ["Speaking", "Writing", "Grammar/Vocab", "Listening", "Reading"],
-    themeColor: "#B8FF5F",
+    themeColor: "#b28505",
   },
 
   ...initialMockData,

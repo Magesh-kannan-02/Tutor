@@ -17,6 +17,7 @@ import { SelectGoal } from "./steps/SelectGoal";
 import { SelectCorrection } from "./steps/SelectCorrection";
 import { SelectFluently } from "./steps/SelectFluently";
 import { LevelAnalysis } from "./steps/LevelAnalysis";
+import { Ready } from "./steps/ready";
 
 export const ONBOARDING_COMPONENTS = [
   SelectAge,
@@ -31,11 +32,12 @@ export const ONBOARDING_COMPONENTS = [
   SelectTrips,
   DidYouKnow,
   SelectLevel,
+  LevelAnalysis,
   SelectContext,
   Call,
   LevelUp,
   SelectGoal,
   SelectCorrection,
   SelectFluently,
-  LevelAnalysis,
+  Ready
 ];

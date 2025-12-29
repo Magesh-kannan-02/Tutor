@@ -40,6 +40,7 @@ export const FlowRenderer = () => {
       [ONBOARDING_PAGES.GOAL]: <Onboarding />,
       [ONBOARDING_PAGES.CORRECTION]: <Onboarding />,
       [ONBOARDING_PAGES.FLUENTLY]: <Onboarding />,
+      [ONBOARDING_PAGES.READY]: <Onboarding />,
     },
 
     [KEYS.FEEDBACK]: {
