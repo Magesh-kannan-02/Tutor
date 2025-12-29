@@ -76,7 +76,7 @@ export const SelectTest = () => {
           variant="secondary"
           textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
           baseClassName="!py-7 w-full"
-          onClick={() => navigate("/onboarding")}
+          onClick={() => navigate("/onboarding/age")}
         />
       </div>
     </RootLayout>

@@ -19,6 +19,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import { ViewReport } from "./viewreport";
 import { Accent } from "./accent";
+import { useNavigate } from "react-router-dom";
 
 const pageComponents: Record<any, any> = {
   fluency: {
@@ -89,9 +90,9 @@ const pageComponents: Record<any, any> = {
 };
 
 export const Report = () => {
-  const { stepIndex, pageIndex, next, back, direction } = useFlowStore();
+  const { stepIndex, pageIndex, next,  direction } = useFlowStore();
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
-
+  const navigate = useNavigate();
   const step = FLOW[stepIndex];
   const currentPageKey = step?.pages?.[pageIndex];
   const currentPage = currentPageKey ? pageComponents[currentPageKey] : null;
@@ -128,7 +129,7 @@ export const Report = () => {
             transition={{ duration: 0.2 }}
             className="w-full"
           >
-            <ReportNavbar onBack={back} title={currentPage?.title} />
+            <ReportNavbar onBack={() => navigate(-1)} title={currentPage?.title} />
           </motion.div>
         )}
       </AnimatePresence>
