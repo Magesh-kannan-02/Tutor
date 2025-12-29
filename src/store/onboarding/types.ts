@@ -70,6 +70,15 @@ export interface FeelOptionItem extends Option<FeelOption> {
   icon: string;
 }
 
+export interface LevelAnalysisData {
+  levelName: string;
+  levelGrade: string;
+  levelImage: string;
+  radarData: number[];
+  radarLabels: string[];
+  themeColor: string;
+}
+
 /* Explicit selections payload */
 export interface OnboardingSelections {
   ageGroup: AgeGroup | null;
@@ -105,6 +114,9 @@ export interface OnboardingState {
   dailyGoal: Goal | null;
   correctionStyle: string | null;
   fluentlySource: string | null;
+
+  // Level Analysis Data
+  levelAnalysisData: LevelAnalysisData;
 
   // DATA
   ageGroups: AgeGroupOption[];
@@ -145,6 +157,7 @@ export interface OnboardingActions {
   setDailyGoal: (goal: Goal) => void;
   setCorrectionStyle: (style: string) => void;
   setFluentlySource: (source: string) => void;
+  setLevelAnalysisData: (data: LevelAnalysisData) => void;
 
   toggleSkill: (skillId: string) => void;
   toggleConfidenceIssue: (issue: string) => void;

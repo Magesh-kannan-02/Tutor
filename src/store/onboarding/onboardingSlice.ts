@@ -162,6 +162,15 @@ const initialState: OnboardingState = {
   correctionStyle: null,
   fluentlySource: null,
 
+  levelAnalysisData: {
+    levelName: "Upper-Intermediate",
+    levelGrade: "B1",
+    levelImage: "@/assets/images/upperIntermediate.png",
+    radarData: [75, 50, 70, 45, 85],
+    radarLabels: ["Speaking", "Writing", "Grammar/Vocab", "Listening", "Reading"],
+    themeColor: "#B8FF5F",
+  },
+
   ...initialMockData,
 
   currentStep: 1,
@@ -193,6 +202,7 @@ export const createOnboardingSlice: StateCreator<
   setDailyGoal: (dailyGoal) => set((s) => { s.dailyGoal = dailyGoal; }),
   setCorrectionStyle: (correctionStyle) => set((s) => { s.correctionStyle = correctionStyle; }),
   setFluentlySource: (fluentlySource) => set((s) => { s.fluentlySource = fluentlySource; }),
+  setLevelAnalysisData: (data) => set((s) => { s.levelAnalysisData = data; }),
 
   toggleSkill: (skillId) =>
     set((s) => {

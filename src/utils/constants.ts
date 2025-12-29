@@ -42,11 +42,12 @@ export const ONBOARDING_PAGES = {
   DIDYOUKNOW:"didyouknow",
   LEVEL: "level",
   CONTEXT: "context",
+  LEVEL_ANALYSIS:"levelanalysis",
   CALL: "call",
   LEVELUP:"levelup",
   GOAL:"goal",
   CORRECTION:"correction",
-  FLUENTLY:"fluently"
+  FLUENTLY:"fluently",
 } as const;
 
 
@@ -68,6 +69,7 @@ export const FLOW = [
       ONBOARDING_PAGES.TRIPS,
       ONBOARDING_PAGES.DIDYOUKNOW,
       ONBOARDING_PAGES.LEVEL,
+      ONBOARDING_PAGES.LEVEL_ANALYSIS,
       ONBOARDING_PAGES.CONTEXT,
       ONBOARDING_PAGES.CALL,
       ONBOARDING_PAGES.LEVELUP,

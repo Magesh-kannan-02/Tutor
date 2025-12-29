@@ -33,6 +33,7 @@ export const FlowRenderer = () => {
       [ONBOARDING_PAGES.TRIPS]: <Onboarding />,
       [ONBOARDING_PAGES.DIDYOUKNOW]: <Onboarding />,
       [ONBOARDING_PAGES.LEVEL]: <Onboarding />,
+      [ONBOARDING_PAGES.LEVEL_ANALYSIS]: <Onboarding />,
       [ONBOARDING_PAGES.CONTEXT]: <Onboarding />,
       [ONBOARDING_PAGES.CALL]: <Onboarding />,
       [ONBOARDING_PAGES.LEVELUP]: <Onboarding />,
