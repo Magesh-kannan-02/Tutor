@@ -13,12 +13,14 @@ import {
 import { BackgroundBlur, Logo, RightArrowIcon } from "@/assets";
 
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const { streak, xp, dailyGoal, courseProgress, user, quickTip, skills } = useHomeStore();
   const [isSkillDrawerOpen, setIsSkillDrawerOpen] = useState(false);
   const [isRewardsDrawerOpen, setIsRewardsDrawerOpen] = useState(false);
   const [rewardsTab, setRewardsTab] = useState<"streak" | "xp">("streak");
+  const navigate = useNavigate();
 
   return (
     <LayoutWithNavBar containerClassName="bg-content1 h-full relative overflow-hidden">
@@ -82,7 +84,7 @@ export const Home = () => {
           <div className="gap-1 flex flex-col">
             <p className="text-[20px] text-content1-foreground font-bold">Daily Goal</p>
             <p className="text-[14px] text-secondary-150 font-medium mb-3">Practice for 10 minutes</p>
-            <button
+            <button onClick={()=>navigate("/practice")}
               className={cn("flex-1 bg-primary-200 !text-content1 py-3 px-3 rounded-xl text-[14px] transition-transform duration-150 ease-out active:scale-95 flex items-center gap-3 w-fit")}
             >
               Start Practice Now <RightArrowIcon/>
@@ -182,6 +184,7 @@ export const Home = () => {
           skills={skills}
           progress={courseProgress.percentage}
           buttonText="View Results"
+          handleOnClick={() => navigate("/report/accent")}
           
         />
 

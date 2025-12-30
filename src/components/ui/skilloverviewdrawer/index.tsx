@@ -73,7 +73,7 @@ export const SkillOverviewDrawer = ({
       onOpenChange={onClose}
       closeOnOutsideClick={true}
       {...props}
-      className="!h-[600px]"
+      className="!h-[600px] "
       innerClassName={cn(
         "border-content1-100 m-0 px-[1rem] bg-content2-150 rounded-[1rem] overflow-y-auto  flex flex-col",
         baseClassName

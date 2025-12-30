@@ -17,7 +17,7 @@ export const Badge = ({ id, name, badgeType, description }: BadgeProps) => {
       <div className="relative z-10 h-full gap-[1.375rem] my-auto flex flex-col items-center justify-center ">
         <div className="relative flex items-center justify-center">
           <div
-            className="absolute w-[170%] h-[200%] blur-3xl opacity-50 rounded-full"
+            className="absolute w-[170%] h-[120%] blur-3xl opacity-50 rounded-full"
             style={{
               background: `radial-gradient(circle, #b28505 20%, transparent 80%)`,
             }}
