@@ -17,6 +17,8 @@ export const ROUTES = {
   VERIFICATION:"accounts/verification",
   VERIFIED:"accounts/verified",
   OLD_PASSWORD:"accounts/old-password",
+  
+  
 
 
 };
@@ -33,6 +35,7 @@ export const STEPS = {
   CREATE_PASSWORD:"createPassword",
   VIEW_REPORT:"viewreport",
   ACCENT:"accent",
+  BADGE:"badge",
 
 };
 export const KEYS={
@@ -94,7 +97,7 @@ export const FLOW = [
   {
     key: KEYS.REPORT,
     path: ROUTES.REPORT,
-    pages: [STEPS.VIEW_REPORT,STEPS.ACCENT,STEPS.FLUENCY,STEPS.PRONUNCIATION,  STEPS.GRAMMAR,STEPS.VOCABULARY] as const,
+    pages: [STEPS.VIEW_REPORT,STEPS.ACCENT,STEPS.FLUENCY,STEPS.PRONUNCIATION,  STEPS.GRAMMAR,STEPS.VOCABULARY,STEPS.BADGE] as const,
   },
 ] as const;
 

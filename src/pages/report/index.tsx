@@ -20,7 +20,15 @@ import React from "react";
 import { ViewReport } from "./viewreport";
 import { Accent } from "./accent";
 import { useNavigate } from "react-router-dom";
-
+import { Badge } from "./components/completion";
+import { useOnboardingStore } from "@/store/onboarding";
+const badgeData = {
+  id: "badge-1",
+  name: "You’ve built a solid foundation.",
+  description:
+    "You’re not a beginner anymore you’re growing, fast. Keep that energy. 💪",
+  badgeType: "upperIntermediate",
+};
 const pageComponents: Record<any, any> = {
   fluency: {
     component: <Fluency />,
@@ -87,10 +95,17 @@ const pageComponents: Record<any, any> = {
     buttonText: "Continue",
     bgColour: "bg-content1",
   },
+  badge: {
+    hasProgress: false,
+    component: <Badge {...badgeData} />,
+    bgColour: "bg-content1",
+    buttonText: "Continue",
+  },
 };
 
 export const Report = () => {
-  const { stepIndex, pageIndex, next,  direction } = useFlowStore();
+  const { stepIndex, pageIndex, next, direction } = useFlowStore();
+  const { percentage } = useOnboardingStore();
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const step = FLOW[stepIndex];
@@ -102,6 +117,17 @@ export const Report = () => {
       scrollContainerRef.current.scrollTop = 0;
     }
   }, [currentPageKey]);
+  const handleClick = () => {
+    if (percentage === 100 && currentPageKey === "vocabulary") navigate("/");
+    else next();
+  };
+  const btnText = () => {
+    if (percentage === 100 && currentPageKey === "vocabulary") {
+      return "Done";
+    } else {
+      return currentPage?.buttonText;
+    }
+  };
 
   return (
     <RootLayout
@@ -129,7 +155,10 @@ export const Report = () => {
             transition={{ duration: 0.2 }}
             className="w-full"
           >
-            <ReportNavbar onBack={() => navigate(-1)} title={currentPage?.title} />
+            <ReportNavbar
+              onBack={() => navigate(-1)}
+              title={currentPage?.title}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -201,9 +230,9 @@ export const Report = () => {
       {/* Footer */}
       <div className="pt-4 my-auto w-full ">
         <Button
-          buttonText={currentPage?.buttonText}
+          buttonText={btnText()}
           variant="secondary"
-          onClick={next}
+          onClick={handleClick}
           textClassName="text-h5 !text-content1 font-medium font-sans"
         />
       </div>

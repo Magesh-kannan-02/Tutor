@@ -20,4 +20,5 @@ export {ArrowLeftIcon} from './arrowLeftIcon'
 export {EditPenIcon} from './editPenIcon'
 export {LockIcon}  from './lockIcon'
 export {ExitIcon} from './exitIcon'
+export {LogoIcon} from './logoIcon'
 

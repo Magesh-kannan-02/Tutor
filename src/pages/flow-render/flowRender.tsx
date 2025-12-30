@@ -50,6 +50,7 @@ export const FlowRenderer = () => {
       [STEPS.PRONUNCIATION]: <Report />,
       [STEPS.GRAMMAR]: <Report />,
       [STEPS.VOCABULARY]: <Report />,
+      [STEPS.BADGE]: <Report />,
     },
   };
 

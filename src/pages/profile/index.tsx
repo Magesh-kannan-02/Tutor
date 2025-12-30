@@ -93,6 +93,7 @@ export const Profile = () => {
           <ArrowRightIcon />
         </div>
         <div
+          onClick={() => navigate("/login", { replace: true })}
           className="
     flex items-center w-full
     rounded-[0.625rem] bg-background-100/60 p-[1rem]
