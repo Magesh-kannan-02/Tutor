@@ -29,7 +29,7 @@ export const SelectConfidence = ({ onNext }: SelectConfidenceProps) => {
   };
 
   return (
-    <div className="flex flex-col justify-between ">
+    <div className="flex flex-col justify-between min-h-full">
       {/*CONTENT */}
       <div className="flex-1 overflow-y-auto">
         <div className="flex flex-col items-center gap-6 px-4 pt-4 ">
