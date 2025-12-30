@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { roleRoutes } from "@/router/route";
 import { ROUTES } from "@/utils";
+import { useOnboardingStore } from '../store/onboarding/index';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -11,6 +12,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   const userRole = "user"; // get from auth store
   const isAuthenticated = true;
+  const { progress } = useOnboardingStore();
+  if (progress < 100) {
+    return <Navigate to={ROUTES.SELECT_TEST} replace />;
+  }
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.LOGIN} replace />;
