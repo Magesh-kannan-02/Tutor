@@ -31,6 +31,7 @@ export const SelectTest = () => {
 
         <Button
           buttonText="Login"
+          onClick={() => navigate("/login")}
           textClassName="!text-body text-content1-foreground"
           baseClassName="rounded-[0.75rem] px-[1.531rem] py-[0.656rem] bg-gradient-to-b from-primary to-primary-foreground"
         />

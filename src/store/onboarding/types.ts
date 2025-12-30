@@ -139,6 +139,7 @@ export interface OnboardingState {
   currentStep: number;
   totalSteps: number;
   isCompleted: boolean;
+  progress: number;
   percentage: number;
   statsValue: number;
 
@@ -179,6 +180,8 @@ export interface OnboardingActions {
   resetOnboarding: () => void;
 
   updateStats: (percentage: number, statsValue: number) => void;
+  setPercentage: (percentage: number) => void;
+  setProgress: (progress: number) => void;
   resetSelections: () => void;
 
   isStepValid: (step: number) => boolean;

@@ -3,7 +3,7 @@ import { vocabularyData, vocabularyTitle } from "@/data/report";
 
 export const Vocabulary = () => {
   return (
-    <div className="flex pt-[1.813rem] pb-[1rem] flex-col gap-[1rem]">
+    <div className="flex pt-[1.813rem] pb-[1rem] flex-col gap-[1rem] px-[1rem]">
       {/* Title Card */}
       <RevealOnScroll>
         <Wordscard

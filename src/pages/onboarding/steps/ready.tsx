@@ -2,11 +2,13 @@ import { LeftArrowIcon } from "@/assets"
 import { Button, Roadmap, RevealOnScroll } from "@/components"
 import { useFlowStore } from "@/store/flow";
 import { useOnboardingStore } from "@/store/onboarding"
+import { useNavigate } from "react-router-dom";
+
 
 export const Ready = () => {
   const { roadmapData } = useOnboardingStore();
    const {back } = useFlowStore();
-
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col h-screen overflow-hidden text-content1-foreground">
 
@@ -72,7 +74,7 @@ export const Ready = () => {
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
             baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
-            // onClick={onNext}
+            onClick={() => navigate("/")}
           />
         </RevealOnScroll>
       </div>

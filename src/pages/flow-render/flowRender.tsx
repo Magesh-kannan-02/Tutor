@@ -31,13 +31,13 @@ export const FlowRenderer = () => {
       [ONBOARDING_PAGES.LEVEL_ANALYSIS]: <Onboarding />,
       [ONBOARDING_PAGES.CONTEXT]: <Onboarding />,
       [ONBOARDING_PAGES.CALL]: <Onboarding />,
+      [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: <Onboarding />,
+      [ONBOARDING_PAGES.STREAK]: <Onboarding />,
       [ONBOARDING_PAGES.LEVELUP]: <Onboarding />,
       [ONBOARDING_PAGES.GOAL]: <Onboarding />,
       [ONBOARDING_PAGES.CORRECTION]: <Onboarding />,
       [ONBOARDING_PAGES.FLUENTLY]: <Onboarding />,
       [ONBOARDING_PAGES.READY]: <Onboarding />,
-      [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: <Onboarding />,
-      [ONBOARDING_PAGES.STREAK]: <Onboarding />,
     },
 
     [KEYS.FEEDBACK]: {
@@ -56,6 +56,12 @@ export const FlowRenderer = () => {
       [STEPS.PRONUNCIATION]: <Report />,
       [STEPS.GRAMMAR]: <Report />,
       [STEPS.VOCABULARY]: <Report />,
+      [STEPS.BADGE]: <Report />,
+    },
+
+    [KEYS.PRACTICE_FLOW]: {
+      [ONBOARDING_PAGES.CALL]: <Onboarding />,
+      [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: <Onboarding />,
     },
   };
 

@@ -4,6 +4,8 @@ import { useFlowStore } from "@/store/flow";
 import { Button, BroadProgressBar, RevealOnScroll } from "@/components";
 import DiamondImg from "@/assets/images/diamond.png";
 import Lottie from "lottie-react";
+import { FLOW, KEYS, ROUTES, STEPS } from "@/utils/constants";
+import { useNavigate } from "react-router-dom";
 interface OnboardingCompleteProps {
   time?: string;
   xp?: number;
@@ -17,7 +19,29 @@ export const OnboardingComplete = ({
   progressTime = "1 / 30 min",
   progress = 40,
 }: OnboardingCompleteProps) => {
-  const { next } = useFlowStore();
+  const { next, stepIndex, pageIndex, goTo } = useFlowStore();
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    const currentFlow = FLOW[stepIndex];
+    if (!currentFlow) {
+      next();
+      return;
+    }
+
+    const totalPages = currentFlow.pages.length;
+    const isLastPage = pageIndex === totalPages - 1;
+
+    // Condition 1: If Navbar is full (meaning we are at the end of the flow), go to Report
+    if (isLastPage) {
+      // Force navigation to Report Flow
+      goTo(KEYS.REPORT, STEPS.VIEW_REPORT);
+      navigate(ROUTES.REPORT.replace(":page", STEPS.VIEW_REPORT));
+    } else {
+      // Condition 2: If Navbar is not full, go to next step (Streak -> Feedback)
+      next();
+    }
+  };
 
   return (
     <div className="fixed inset-0 overflow-hidden">
@@ -58,7 +82,7 @@ export const OnboardingComplete = ({
           variant="secondary"
           textClassName="text-body5 !text-content1 font-medium"
           baseClassName="!py-7 w-full mb-4 transition-transform duration-75 ease-out active:scale-[0.97]"
-          onClick={next}
+          onClick={handleContinue}
         />
       </div>
 

@@ -7,10 +7,12 @@ import aiCallBlackImg from "@/assets/images/aiCallBlack.png";
 import { Button, Chip, Dropdown, QuickTip, RevealOnScroll } from "@/components";
 import { cn } from "@/lib/utils";
 import { usePracticeStore } from "@/store/practice";
+import { useNavigate } from "react-router-dom";
 
 export const Practice = () => {
   const { streak, xp, user } = useHomeStore();
   const { contextCategory, selectedContext, setContextCategory, setSelectedContext } = usePracticeStore();
+  const navigate = useNavigate();
 
   return (
     <LayoutWithNavBar containerClassName="bg-content1 h-full relative overflow-hidden">
@@ -145,7 +147,7 @@ export const Practice = () => {
               variant="secondary"
               textClassName="text-body5 !text-content1 font-medium"
               baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
-              // onClick={onNext}
+              onClick={() => navigate("/practice-flow/call")}
             />
           </RevealOnScroll>
         </div>

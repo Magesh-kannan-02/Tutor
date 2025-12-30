@@ -182,6 +182,7 @@ const initialState: OnboardingState = {
   currentStep: 1,
   totalSteps: 18,
   isCompleted: false,
+  progress: 40,
   percentage: 40,
   statsValue: 7,
   isCallDrawerOpen: false,
@@ -298,6 +299,14 @@ export const createOnboardingSlice: StateCreator<
   updateStats: (percentage, statsValue) => set((s) => {
     s.percentage = percentage;
     s.statsValue = statsValue;
+  }),
+
+  setPercentage: (percentage) => set((s) => {
+    s.percentage = percentage;
+  }),
+
+  setProgress: (progress) => set((s) => {
+    s.progress = progress;
   }),
 
   resetSelections: () =>

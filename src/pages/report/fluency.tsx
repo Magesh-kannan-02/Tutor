@@ -4,7 +4,7 @@ import { frequencydata } from "@/data/report";
 
 export const Fluency = () => {
   return (
-    <div className="pt-[2rem] pb-[0.5rem]  w-[100%] flex flex-col gap-[1rem]">
+    <div className="pt-[2rem] pb-[0.5rem]  w-[100%] flex flex-col gap-[1rem] px-[1rem]">
       {frequencydata?.map((item, index) => (
         <RevealOnScroll
           key={index}

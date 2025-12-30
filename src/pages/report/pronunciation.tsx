@@ -72,7 +72,7 @@ const PronunciationCard = ({ item }: { item: any }) => {
 
 export const Pronunciation = () => {
   return (
-    <div className="flex flex-col pt-[2rem] pb-[1rem] gap-y-[1.25rem] w-full">
+    <div className="flex flex-col pt-[2rem] pb-[1rem] gap-y-[1.25rem] w-full px-[1rem]">
       {/* Summary Card */}
       <RevealOnScroll delay={0.1} y={16} threshold={0.3}>
         <Wordscard

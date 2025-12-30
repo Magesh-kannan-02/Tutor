@@ -2,7 +2,7 @@ import { Featurecard, RadarChart, RevealOnScroll } from "@/components";
 
 export const ViewReport = () => {
   return (
-    <div className=" w-full gap-[1.5rem]  h-full flex items-center flex-col justify-center">
+    <div className=" w-full gap-[1.5rem]  h-full flex items-center flex-col justify-center px-[1rem]">
       <RevealOnScroll delay={0}>
         <div className="flex flex-col  items-center pt-7  gap-[1.2rem]">
           <p className="text-body5 font-regular text-content1-foreground pb-1">

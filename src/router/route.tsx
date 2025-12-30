@@ -8,6 +8,7 @@ import {
   AccountChange,
   Profile,
   Practice,
+  Login,
 } from "@/pages";
 
 import { ROUTES } from "@/utils";
@@ -25,43 +26,21 @@ export const publicRoutes: Route[] = [
   { path: ROUTES.FEEDBACK, element: <FlowRenderer /> },
   { path: ROUTES.REPORT, element: <FlowRenderer /> },
 
+  { path: ROUTES.LOGIN, element: <Login /> },
+  { path: ROUTES.PRACTICE_FLOW, element: <FlowRenderer /> },
 ];
 
 // Protected pages
 export const privateRoutes = [
   { path: ROUTES?.HOME, element: <Home /> },
-  {
-    path: ROUTES.ACCOUNTS,
-    element: <Accounts />,
-  },
-  {
-    path: ROUTES.CHANGE_NAME,
-    element: <AccountChange />,
-  },
-  {
-    path: ROUTES.CHANGE_EMAIL,
-    element: <AccountChange />,
-  },
-  {
-    path: ROUTES.PROFILE,
-    element: <Profile />,
-  },
-  {
-    path: ROUTES.VERIFICATION,
-    element: <AccountChange />,
-  },
-  {
-    path: ROUTES.VERIFIED,
-    element: <AccountChange />,
-  },
-  {
-    path: ROUTES.CHANGE_PASSWORD,
-    element: <AccountChange />,
-  },
-  {
-    path: ROUTES.OLD_PASSWORD,
-    element: <AccountChange />,
-  },
+  { path: ROUTES?.ACCOUNTS, element: <Accounts /> },
+  { path: ROUTES.CHANGE_NAME, element: <AccountChange /> },
+  { path: ROUTES.CHANGE_EMAIL, element: <AccountChange /> },
+  { path: ROUTES.PROFILE, element: <Profile /> },
+  { path: ROUTES.VERIFICATION, element: <AccountChange /> },
+  { path: ROUTES.VERIFIED, element: <AccountChange /> },
+  { path: ROUTES.CHANGE_PASSWORD, element: <AccountChange /> },
+  { path: ROUTES.OLD_PASSWORD, element: <AccountChange /> },
   {
     path: ROUTES.PRACTICE,
     element: <Practice />,

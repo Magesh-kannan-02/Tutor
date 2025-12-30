@@ -4,7 +4,7 @@ import { grammarData, grammarTitle } from "@/data/report";
 
 export const Grammar = () => {
   return (
-    <div className="pt-[2.9rem] pb-[1rem] flex flex-col gap-[0.75rem] w-[100%] ">
+    <div className="pt-[2.9rem] pb-[1rem] flex flex-col gap-[0.75rem] w-[100%] px-[1rem]">
       <RevealOnScroll
         delay={0.1}
         y={16}

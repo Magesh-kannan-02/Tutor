@@ -3,20 +3,28 @@ import { AnimatedScreen, ProgressBar } from "@/components";
 import { RootLayout } from "@/layouts/withoutNavBar";
 
 import { useFlowStore } from "@/store/flow";
+import { useOnboardingStore } from "@/store/onboarding";
 import { FLOW } from "@/utils/constants";
 import { ONBOARDING_COMPONENTS } from "./onboardingSteps";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 
 export const Onboarding = () => {
   const navigate = useNavigate();
   const { stepIndex, pageIndex, next, back, direction, getCurrentPage } =
     useFlowStore();
+  const { setProgress } = useOnboardingStore();
 
-  const totalPages = FLOW.reduce(
-    (sum, step) => sum + (step.pages.length || 1),
-    0
-  );
+  const currentFlow = FLOW[stepIndex];
+  const totalPages = currentFlow?.pages.length || 1;
+  const headerDisallowedRoutes=["call","onboardingcompletion","ready"];
+
+  const lastPageKey = currentFlow?.pages[totalPages - 1];
+  const isLastPageHidden = typeof lastPageKey === 'string' && headerDisallowedRoutes.includes(lastPageKey);
+  
+  // If the last page is hidden (e.g. READY), we treat the previous page as the visual 100% mark
+  const effectiveTotal = isLastPageHidden ? totalPages - 1 : totalPages;
 
   const Back = () => {
     if (pageIndex > 0) {
@@ -26,17 +34,16 @@ export const Onboarding = () => {
     }
   };
 
-  const completedPages =
-    FLOW.slice(0, stepIndex).reduce(
-      (sum, s) => sum + (s.pages.length || 1),
-      0
-    ) + pageIndex;
+  const progress = Math.min(100, ((pageIndex + 1) / effectiveTotal) * 100);
 
-  const progress = (completedPages / totalPages) * 100;
+  // Sync progress to store
+  useEffect(() => {
+    setProgress(progress);
+  }, [progress, setProgress]);
 
-  const CurrentStep = ONBOARDING_COMPONENTS[pageIndex] ?? null;
+  const currentPage = getCurrentPage() as keyof typeof ONBOARDING_COMPONENTS;
+  const CurrentStep = ONBOARDING_COMPONENTS[currentPage] ?? null;
   let showHeader = true;
-  const headerDisallowedRoutes=["call","onboardingcompletion","ready"]
   if (headerDisallowedRoutes?.includes(getCurrentPage() || "")) {
     showHeader = false;
   }

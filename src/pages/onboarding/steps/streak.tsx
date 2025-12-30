@@ -1,9 +1,19 @@
 import StreakImg from "@/assets/images/streak.png";
 import { Button, Featurecard, RevealOnScroll } from "@/components";
+
 import { useFlowStore } from "@/store/flow";
+import { KEYS, ROUTES, STEPS } from "@/utils/constants";
+import { useNavigate } from "react-router-dom";
 
 export const Streak = () => {
-  const { next } = useFlowStore();
+  const { goTo } = useFlowStore();
+  const navigate = useNavigate();
+
+  const handleContinue = () => {
+    // Navigate to Feedback flow
+    goTo(KEYS.FEEDBACK, STEPS.RATING);
+    navigate(ROUTES.FEEDBACK.replace(":page", STEPS.RATING));
+  };
 
   return (
     <div className="p-[1rem] flex flex-col justify-between h-full">
@@ -39,7 +49,7 @@ export const Streak = () => {
         <Button
           buttonText="Let’s Go!"
           variant="secondary"
-          onClick={next}
+          onClick={handleContinue}
           
           textClassName="text-h5 !text-content1 font-medium font-sans"
         />

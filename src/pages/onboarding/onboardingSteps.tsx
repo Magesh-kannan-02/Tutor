@@ -20,28 +20,29 @@ import { LevelAnalysis } from "./steps/LevelAnalysis";
 import { Ready } from "./steps/ready";
 import { OnboardingComplete } from "./steps/onboardingComplete";
 import { Streak } from "./steps/streak";
+import { ONBOARDING_PAGES } from "@/utils/constants";
 
-export const ONBOARDING_COMPONENTS = [
-  SelectAge,
-  SelectGender,
-  SelectSkill,
-  SelectConfidence,
-  SelectFeel,
-  SelectUse,
-  SelectArea,
-  Percentage,
-  SelectDifficulty,
-  SelectTrips,
-  DidYouKnow,
-  SelectLevel,
-  LevelAnalysis,
-  SelectContext,
-  Call,
-  LevelUp,
-  SelectGoal,
-  SelectCorrection,
-  SelectFluently,
-  Ready,
-  OnboardingComplete,
-  Streak,
-];
+export const ONBOARDING_COMPONENTS = {
+  [ONBOARDING_PAGES.AGE]: SelectAge,
+  [ONBOARDING_PAGES.GENDER]: SelectGender,
+  [ONBOARDING_PAGES.SKILL]: SelectSkill,
+  [ONBOARDING_PAGES.CONFIDENCE]: SelectConfidence,
+  [ONBOARDING_PAGES.FEEL]: SelectFeel,
+  [ONBOARDING_PAGES.USE]: SelectUse,
+  [ONBOARDING_PAGES.AREA]: SelectArea,
+  [ONBOARDING_PAGES.PERCENT]: Percentage,
+  [ONBOARDING_PAGES.DIFFICULTY]: SelectDifficulty,
+  [ONBOARDING_PAGES.TRIPS]: SelectTrips,
+  [ONBOARDING_PAGES.DIDYOUKNOW]: DidYouKnow,
+  [ONBOARDING_PAGES.LEVEL]: SelectLevel,
+  [ONBOARDING_PAGES.LEVEL_ANALYSIS]: LevelAnalysis,
+  [ONBOARDING_PAGES.CONTEXT]: SelectContext,
+  [ONBOARDING_PAGES.CALL]: Call,
+  [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: OnboardingComplete,
+  [ONBOARDING_PAGES.STREAK]: Streak,
+  [ONBOARDING_PAGES.LEVELUP]: LevelUp,
+  [ONBOARDING_PAGES.GOAL]: SelectGoal,
+  [ONBOARDING_PAGES.CORRECTION]: SelectCorrection,
+  [ONBOARDING_PAGES.FLUENTLY]: SelectFluently,
+  [ONBOARDING_PAGES.READY]: Ready,
+};

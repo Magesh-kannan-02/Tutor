@@ -35,7 +35,7 @@ export const DidYouKnow = ({ onNext }: DidYouKnowProps) => {
           <RevealOnScroll delay={0.2}>
 
         <p
-          className="text-6xl font-black leading-[1] bg-transparent text-center pb-4"
+          className="text-6xl !text-content1 font-black text-transparent leading-[1] bg-transparent text-center pb-4"
           style={{
             WebkitTextStroke: "2px transparent",
             backgroundImage: "linear-gradient(180deg, #FFFFFF 0%, #010101 80%)",

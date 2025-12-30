@@ -4,7 +4,7 @@ import { iconMapping } from "@/utils";
 export const Accent = () => {
   const Icon = iconMapping["lamp"];
   return (
-    <div className="flex flex-col gap-[2.3rem] ">
+    <div className="flex flex-col gap-[2.3rem] px-[1rem]">
       <RevealOnScroll>
         <div className="flex flex-col items-center gap-[0.5rem]">
           <img src={Icon?.icon as string} alt="lamp" />
