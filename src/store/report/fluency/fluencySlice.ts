@@ -1,7 +1,7 @@
 import type { StateCreator } from "zustand";
 import type { FluencyState } from "./types";
 
-export const createFluencySlice: StateCreator<FluencyState> = (set,get) => ({
+export const createFluencySlice: StateCreator<FluencyState> = () => ({
   fluencyScore: 0,
   fluencyDescription: "",
 

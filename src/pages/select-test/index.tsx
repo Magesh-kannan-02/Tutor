@@ -1,6 +1,6 @@
 import { BackgroundBlur, Logo } from "@/assets";
 import { Button, Featurecard, RevealOnScroll } from "@/components";
-import { RootLayout } from "@/layouts";
+import { RootLayout } from "@/layouts/withoutNavBar";
 import { useSelectTestStore } from "@/store/select-test";
 import { useNavigate } from "react-router-dom";
 
@@ -76,7 +76,7 @@ export const SelectTest = () => {
           variant="secondary"
           textClassName="!text-[1.125rem] text-content1 font-medium font-sans"
           baseClassName="!py-7 w-full"
-          onClick={() => navigate("/onboarding")}
+          onClick={() => navigate("/onboarding/age")}
         />
       </div>
     </RootLayout>

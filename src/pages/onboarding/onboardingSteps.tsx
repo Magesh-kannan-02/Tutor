@@ -18,6 +18,8 @@ import { SelectCorrection } from "./steps/SelectCorrection";
 import { SelectFluently } from "./steps/SelectFluently";
 import { LevelAnalysis } from "./steps/LevelAnalysis";
 import { Ready } from "./steps/ready";
+import { OnboardingComplete } from "./steps/onboardingComplete";
+import { Streak } from "./steps/streak";
 
 export const ONBOARDING_COMPONENTS = [
   SelectAge,
@@ -39,5 +41,7 @@ export const ONBOARDING_COMPONENTS = [
   SelectGoal,
   SelectCorrection,
   SelectFluently,
-  Ready
+  Ready,
+  OnboardingComplete,
+  Streak,
 ];

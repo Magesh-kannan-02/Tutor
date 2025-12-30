@@ -144,6 +144,7 @@ export interface OnboardingState {
 
   isCallDrawerOpen: boolean;
   callDrawerCloseIn: number;
+  roadmapData: RoadmapData[];
 }
 
 export interface OnboardingActions {
@@ -187,6 +188,15 @@ export interface OnboardingActions {
   openCallDrawer: (duration: number) => void;
   closeCallDrawer: () => void;
   tickCallDrawer: () => void;
+
+  setRoadmapData: (data: RoadmapData[]) => void;
+}
+
+export interface RoadmapData {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
 }
 
 export type OnboardingStore = OnboardingState & OnboardingActions;

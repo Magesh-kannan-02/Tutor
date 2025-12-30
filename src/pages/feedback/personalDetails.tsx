@@ -1,16 +1,16 @@
 import { Inputprompt } from "@/components";
-import { EmailContent } from "./components/emailContent";
-import { useFeedBackStore } from "@/store/feedback";
+import { Content } from "./components/Content";
+import { useAccountStore } from "@/store/accounts";
 
 export const PersonalDetails = () => {
-  const personalInfo = useFeedBackStore((state) => state.personalInfo);
-  const updatePersonalInfo = useFeedBackStore(
+  const personalInfo = useAccountStore((state) => state.personalInfo);
+  const updatePersonalInfo = useAccountStore(
     (state) => state.updatePersonalInfo
   );
 
   return (
-    <div className="w-full  flex flex-col justify-between">
-      <EmailContent
+    <div className="w-full">
+      <Content
         text={"Let’s stay in touch ✉️"}
         description="Enter your email to get progress updates, level insights, and personalized English tips."
       />

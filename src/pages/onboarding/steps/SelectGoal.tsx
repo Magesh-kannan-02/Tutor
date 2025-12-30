@@ -35,7 +35,7 @@ export const SelectGoal = ({ onNext }: SelectGoalProps) => {
 
       <div className="flex flex-col gap-4 py-4 w-full">
         {goalOptions?.map((goal, index) => (
-          <RevealOnScroll key={goal} delay={0.15 + index * 0.06} y={20}>
+          <RevealOnScroll key={goal} delay={0.2 + index * 0.06} y={20}>
             <Featurecard
               textContent={`${goal} min`}
               allowendendContent={false}

@@ -150,7 +150,7 @@ export const Call = ({onNext}:CallProps) => {
         className="!h-[485px] max-w-[450px] !mx-auto"
         headerContent="Incorrect verb form"
         headerClassName="text-body4 text-content1-foreground font-semibold"
-        headerContentCalssname="flex-1 text-center"
+        headerContentClassname="flex-1 text-center"
         content={
          <motion.div
             className="p-4 h-full flex flex-col  mb-auto"

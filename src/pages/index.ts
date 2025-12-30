@@ -7,6 +7,10 @@ export {SelectTest} from './select-test/index';
 export {Onboarding} from './onboarding';
 export {FlowRenderer} from './flow-render/flowRender';
 export {FeedBack} from './feedback/index'
+export {Accounts} from './accounts/index'
+export {AccountChange} from './accounts/components/change'
+export {Profile} from './profile/index'
+export {Practice} from './practice/index'
 
 
 

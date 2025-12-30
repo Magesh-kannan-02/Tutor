@@ -18,6 +18,10 @@ import {
   Skillcard,
   Wordscard,
   VocabularyCard,
+  ProfileAvatar,
+  ProfileDetailsCard,
+  RewardsDetailsCard,
+  SkillOverviewDrawer,
   BroadProgressBar,
   SemiCircleProgress,
   FocusArea,
@@ -47,12 +51,10 @@ export const PlayGround = () => {
     {
       label: "Play your Audio",
       activeLabel: "Helpful",
-
     },
     {
       label: "Beneficial",
       activeLabel: "Helpful",
-
     },
     {
       label: "Pleasant",
@@ -186,13 +188,17 @@ export const PlayGround = () => {
         mode="full"
       />
 
+      <Avatarcard
+        icontype="avatar"
+        imageClassname="w-[12rem] h-[11rem]"
+        className="w-36 h-36 overflow-hidden"
+      />
         <Avatarcard icontype="avatar" imageClassname="w-[12rem] h-[11rem]" className="w-36 h-36 overflow-hidden"/>
 
       <GrammarCard
         title="Use the correct noun form:"
         message="I’m Working on it!"
         explanation="You can count apps or websites, but not software.Think of “software” as a whole category, not separate items."
-         
       />
       <VocabularyCard
         value="a1-good"
@@ -205,7 +211,7 @@ export const PlayGround = () => {
       <Button
         buttonText="Open Drawer"
         textClassName="!text-body text-content1-foreground"
-        handleOnClick={()=>setOpen(!open)}
+        handleOnClick={() => setOpen(!open)}
         baseClassName="rounded-[0.75rem] px-[1.531rem] py-[0.656rem]  bg-gradient-to-b from-primary to-primary-foreground "
       />
       <DrawerComponent
@@ -215,6 +221,88 @@ export const PlayGround = () => {
         overlayClassName="fixed inset-x-0 mx-auto  bg-transparent "
         className=" !h-[480px] !mx-auto  "
         onOpenChange={setOpen}
+      />
+      <ProfileAvatar
+        size={160}
+        onChange={(file, preview) => {
+          console.log(file);
+          console.log(preview);
+        }}
+        value="https://th.bing.com/th/id/OIP.j11pt13ZectNBnErbzz1JAHaHa?w=209&h=209&c=7&r=0&o=5&cb=ucfimg2&dpr=1.3&pid=1.7&ucfimg=1"
+        className="h-14 w-14"
+      />
+      <ProfileDetailsCard
+        name="Bala Vignesh"
+        joinedDate="02 Oct 2025"
+        streak="01 Day"
+        xp={120}
+      />
+      <RewardsDetailsCard
+        rewards={[
+          {
+            id: "reward-1",
+            isLocked: false,
+             icontype: "badge",
+            
+          },
+          {
+            id: "reward-2",
+            isLocked: true,
+            icontype: "badge",
+          },
+          {
+            id: "reward-2",
+            isLocked: true,
+            icontype: "badge",
+          },
+          {
+            id: "reward-2",
+            isLocked: true,
+            icontype: "badge",
+          },
+          {
+            id: "reward-2",
+            isLocked: true,
+            icontype: "badge",
+          },
+        ]}
+      />
+       <Button
+        buttonText="Open Drawer"
+        textClassName="!text-body text-content1-foreground"
+        handleOnClick={() => setOpen(!open)}
+        baseClassName="rounded-[0.75rem] px-[1.531rem] py-[0.656rem]  bg-gradient-to-b from-primary to-primary-foreground "
+      />
+      <SkillOverviewDrawer progress={65}  open={open} onClose={() => setOpen(false)} 
+       skills={[
+        {
+          name:"Vocabulary",
+          progress:78,
+          iconType:"microphone",
+          description:"Crystal clear"
+        },
+         {
+          name:"Vocabulary",
+          progress:52,
+          iconType:"vocabulary",
+          description:"Growing"
+        },
+         {
+          name:"Grammar",
+          progress:78,
+          iconType:"microphone",
+          description:"Improving"
+        },
+         {
+          name:"Fluency",
+          progress:10,
+          iconType:"vocabulary",
+          description:"Smoother"
+        }
+        
+        
+          
+       ]}
       />
       <BroadProgressBar value={40}/>
       <SemiCircleProgress value={50} 
@@ -267,17 +355,17 @@ export const PlayGround = () => {
       <Navbar
         defaultActive="home"
         items={[
-          {
+          { path:"/",
             key: "home",
             label: "Home",
             icontype: "home",
           },
-          {
+          { path:"/practice",
             key: "practice",
             label: "Practice",
             icontype: "microphone",
           },
-          {
+          { path:"/profile",
             key: "profile",
             label: "Profile",
             icontype: "profile",

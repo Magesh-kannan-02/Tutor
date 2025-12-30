@@ -11,8 +11,8 @@ export { Levelcard } from "./ui/levelcard/levelcard";
 export { Chip } from "./atoms/chip/badge";
 export { CircularTimer } from "./ui/timer/timer";
 export { CircularProgress } from "./ui/circularprogressbar/circularprogressbar";
-export { Wordscard } from './ui/wordscard/wordscard';
-export { Inputprompt } from './ui/inputprompt/inputprompt';
+export { Wordscard } from "./ui/wordscard/wordscard";
+export { Inputprompt } from "./ui/inputprompt/inputprompt";
 export { Dropdown } from "./ui/dropdown/select";
 export { GrammarCard } from "./ui/grammarcard/grammarcard";
 export { AccordionComponent } from "./ui/accordian/accordian";
@@ -29,6 +29,13 @@ export { Switch } from './ui/switch/switch';
 export { StreakProgressCalendar } from './ui/streakprogresscalender/streakprogresscalender';
 export { SessionCard } from './ui/sessioncard/sessioncard';
 export { Input } from "./ui/input/input";
-export {RevealOnScroll} from './ui/animations/revealOnScroll'
-export {AnimatedScreen} from './ui/animations/screenAnimation'
+export { RevealOnScroll } from "./ui/animations/revealOnScroll";
+export { AnimatedScreen } from "./ui/animations/screenAnimation";
+export { ProfileAvatar } from "./ui/profilepic/avatar";
+export {ProfileDetailsCard} from './ui/profiledetailscard/index'
+export {Separator} from './atoms/separator/separator'
+export {RewardsDetailsCard} from './ui/rewardsdetailscard/index'
+export {SkillOverviewDrawer} from './ui/skilloverviewdrawer/index'
+
 export {Roadmap} from './ui/roadmap/roadmap';
+export {RewardAndProgress} from './ui/rewardandprogress/rewardandprogress';

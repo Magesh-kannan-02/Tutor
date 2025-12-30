@@ -3,11 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FLOW, KEYS, ONBOARDING_PAGES, STEPS } from "@/utils/constants";
 import { useFlowStore } from "@/store/flow";
 import { Report } from "../report";
-// import { Completion } from "../feedback/completion";
-// import { Verified } from "../feedback/verified";
-
-// import { PersonalDetails } from "../feedback/personalDetails";
-// import { Verification } from "../feedback/verification";
 
 import { Onboarding } from "../onboarding";
 import { FeedBack } from "../feedback";
@@ -41,6 +36,8 @@ export const FlowRenderer = () => {
       [ONBOARDING_PAGES.CORRECTION]: <Onboarding />,
       [ONBOARDING_PAGES.FLUENTLY]: <Onboarding />,
       [ONBOARDING_PAGES.READY]: <Onboarding />,
+      [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: <Onboarding />,
+      [ONBOARDING_PAGES.STREAK]: <Onboarding />,
     },
 
     [KEYS.FEEDBACK]: {
@@ -49,9 +46,12 @@ export const FlowRenderer = () => {
       [STEPS.FEED_BACKUSER_DDETAILS]: <FeedBack />,
       [STEPS.VERFIFICATION]: <FeedBack />,
       [STEPS.VERIFIED]: <FeedBack />,
+      [STEPS.CREATE_PASSWORD]: <FeedBack />,
     },
 
     [KEYS.REPORT]: {
+      [STEPS.VIEW_REPORT]: <Report />,
+      [STEPS.ACCENT]: <Report />,
       [STEPS.FLUENCY]: <Report />,
       [STEPS.PRONUNCIATION]: <Report />,
       [STEPS.GRAMMAR]: <Report />,
@@ -59,27 +59,35 @@ export const FlowRenderer = () => {
     },
   };
 
-  const step = FLOW[stepIndex];
-  const page = step.pages[pageIndex];
+  const step = FLOW[stepIndex] || FLOW[0];
+  const page = step.pages[pageIndex] || step.pages[0];
 
   useEffect(() => {
-    const stepIdx = FLOW.findIndex((s) => s.path === location.pathname);
-    if (stepIdx === -1) return;
+    const parts = location.pathname.split("/").filter(Boolean);
 
-    if (stepIdx !== stepIndex) {
-      internalNav.current = true;
-      goTo(FLOW[stepIdx].key);
+    const currentStepKey = (parts[0] as keyof typeof COMPONENTS) || FLOW[0].key;
+    const currentPageKey = parts[1] || step.pages[0];
+
+    const stepIdx = FLOW.findIndex((s) => s.key === currentStepKey);
+    if (stepIdx !== -1) {
+      const pageExists = FLOW[stepIdx].pages.includes(currentPageKey as any);
+      if (pageExists) {
+        internalNav.current = true;
+        goTo(
+          currentStepKey,
+          currentPageKey as (typeof FLOW)[number]["pages"][number]
+        );
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, goTo]);
 
   useEffect(() => {
-    const path = FLOW[stepIndex].path;
+    const path = `/${step.key}/${page}`;
     if (location.pathname !== path && !internalNav.current) {
       navigate(path);
     }
-
     internalNav.current = false;
-  }, [stepIndex]);
+  }, [stepIndex, pageIndex, step, page, navigate, location.pathname]);
 
-  return COMPONENTS[step.key][page] || null;
+  return step && page ? COMPONENTS[step.key]?.[page] || null : null;
 };

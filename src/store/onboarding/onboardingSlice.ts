@@ -14,6 +14,10 @@ import type {
 } from "./types";
 
 import upperIntermediateImg from "@/assets/images/upperIntermediate.png";
+import greenTickImg from "@/assets/images/greenTick.png";
+import aimImg from "@/assets/images/aim.png";
+import beginnerImg from "@/assets/images/beginner.png";
+import aiCallImg from "@/assets/images/aiCall.png";
 
 /* ================= MOCK DATA ================= */
 
@@ -182,6 +186,32 @@ const initialState: OnboardingState = {
   statsValue: 7,
   isCallDrawerOpen: false,
   callDrawerCloseIn: 0,
+  roadmapData: [
+    {
+      id: "duration",
+      title: "Duration",
+      description: "Fast, visible results in just 3 months",
+      icon: greenTickImg,
+    },
+    {
+      id: "focus",
+      title: "Focus on",
+      description: "Business English – for professional confidence",
+      icon: aimImg,
+    },
+    {
+      id: "goal",
+      title: "Goal",
+      description: "Speak naturally and confidently at work",
+      icon: beginnerImg,
+    },
+    {
+      id: "tutor",
+      title: "Tutor Style",
+      description: "Cheerful - like having your favorite",
+      icon: aiCallImg,
+    },
+  ],
 };
 
 /* ================= SLICE ================= */
@@ -331,14 +361,15 @@ closeCallDrawer: () =>
     s.callDrawerCloseIn = 0;
   }),
 
-tickCallDrawer: () =>
-  set((s) => {
-    if (s.callDrawerCloseIn <= 1) {
-      s.isCallDrawerOpen = false;
-      s.callDrawerCloseIn = 0;
-    } else {
-      s.callDrawerCloseIn -= 1;
-    }
-  }),
+  tickCallDrawer: () =>
+    set((s) => {
+      if (s.callDrawerCloseIn <= 1) {
+        s.isCallDrawerOpen = false;
+        s.callDrawerCloseIn = 0;
+      } else {
+        s.callDrawerCloseIn -= 1;
+      }
+    }),
 
+  setRoadmapData: (data) => set((s) => { s.roadmapData = data; }),
 });

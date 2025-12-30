@@ -17,3 +17,8 @@ export {ProgressBarLine} from './progressBarLine';
 export {HomeIcon} from './homeIcon';
 export {ProfileIcon} from './profileIcon';
 export {ArrowLeftIcon} from './arrowLeftIcon'
+export {EditPenIcon} from './editPenIcon'
+export {LockIcon}  from './lockIcon'
+export {ExitIcon} from './exitIcon'
+export {RightArrowIcon} from './rightArrowIcon'
+

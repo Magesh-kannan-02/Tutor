@@ -107,7 +107,7 @@ export const SemiCircleProgress = React.forwardRef<
       <ProgressPrimitive.Root
         ref={ref}
         value={progress}
-        className={cn("relative w-fit bg-background-foreground/15", className)}
+        className={cn("relative w-fit", className)}
         {...props}
       >
         {/* SVG Arc */}

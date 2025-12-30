@@ -14,6 +14,8 @@ interface QuickTipProps {
   className?: string
   iconClassname?: string
   imageClassname?: string
+  titleClassName?: string
+  descriptionClassName?: string
 }
 
 export const QuickTip = ({
@@ -25,6 +27,8 @@ export const QuickTip = ({
   className,
   iconClassname,
   imageClassname,
+  titleClassName,
+  descriptionClassName,
   ...rest
 }: QuickTipProps) => {
   const Icon = iconMapping[icontype]
@@ -52,7 +56,8 @@ export const QuickTip = ({
           alt={iconName}
           className={cn(
             "w-12 h-12 object-contain shrink-0",
-            imageClassname
+            imageClassname,
+            iconClassname // Allow iconClassname to also affect images for simpler usage
           )}
         />
       )
@@ -73,11 +78,11 @@ export const QuickTip = ({
       {iconPosition === "start" && renderIcon()}
 
       {/* TEXT */}
-      <div className="flex flex-col gap-3 justify-between flex-1">
-        <p className="text-body5 font-bold !text-content1-foreground">
+      <div className="flex flex-col gap-2 justify-between flex-1">
+        <p className={cn("text-body5 font-bold !text-content1-foreground", titleClassName)}>
           {title}
         </p>
-        <p className="text-h6 !text-content1-foreground leading-5">
+        <p className={cn("text-h6 !text-content1-foreground leading-5", descriptionClassName)}>
           {description}
         </p>
       </div>

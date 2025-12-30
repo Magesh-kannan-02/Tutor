@@ -4,29 +4,13 @@ import type { FeedbackState } from "./types";
 
 export const createFeedbackSlice: StateCreator<FeedbackState> = (set) => ({
   currentfeedbackid: "",
-  personalInfo: {
-    name: "",
-    password: "",
-    verficationCode: "",
-  },
+  
+  isButtonDisabled: false,
+ 
 
   updateFeedback: (id: string) => {
     set({ currentfeedbackid: id });
   },
-  updatePersonalInfo: (key, value) =>
-    set((state) => ({
-      personalInfo: {
-        ...state.personalInfo,
-        [key]: value,
-      },
-    })),
-  resetpersonalInfo: () => {
-    set({
-      personalInfo: {
-        name: "",
-        email: "",
-        verficationCode: "",
-      },
-    });
-  },
+  
+  
 });

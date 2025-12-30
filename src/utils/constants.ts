@@ -5,9 +5,19 @@ export const ROUTES = {
   NOT_AUTHORIZED: "/not-authorized",
   PLAYGROUND: "/playground",
   SELECT_TEST: "/select-test",
-  ONBOARDING: "/onboarding",
-  FEEDBACK: "/feedback",
-  REPORT: "/report",
+  ONBOARDING: "/onboarding/:page",
+  FEEDBACK: "/feedback/:page",
+  REPORT: "/report/:page",
+  ACCOUNTS:"/accounts",
+  DELETE_ACCOUNT:"/delete-account",
+  CHANGE_NAME:"accounts/change-name",
+  CHANGE_EMAIL:"accounts/change-email",
+  CHANGE_PASSWORD:"accounts/change-password",
+  PROFILE:"/profile",
+  VERIFICATION:"accounts/verification",
+  VERIFIED:"accounts/verified",
+  OLD_PASSWORD:"accounts/old-password",
+  PRACTICE:"/practice",
 
 };
 export const STEPS = {
@@ -19,7 +29,11 @@ export const STEPS = {
   VERIFIED: "verified",
   RATING:"rating",
   FEED_BACKUSER_DDETAILS:"feedbackuserdetails",
-  VERFIFICATION:"verification"
+  VERFIFICATION:"verification",
+  CREATE_PASSWORD:"createPassword",
+  VIEW_REPORT:"viewreport",
+  ACCENT:"accent",
+
 };
 export const KEYS={
   ONBOARDING:"onboarding",
@@ -48,7 +62,9 @@ export const ONBOARDING_PAGES = {
   GOAL:"goal",
   CORRECTION:"correction",
   FLUENTLY:"fluently",
-  READY:"ready"
+  READY:"ready",
+  ONBOARDING_COMPLETION:"onboardingcompletion",
+  STREAK:"streak"
 } as const;
 
 
@@ -77,18 +93,20 @@ export const FLOW = [
       ONBOARDING_PAGES.GOAL,
       ONBOARDING_PAGES.CORRECTION,
       ONBOARDING_PAGES.FLUENTLY,
-      ONBOARDING_PAGES.READY
+      ONBOARDING_PAGES.READY,
+      ONBOARDING_PAGES.ONBOARDING_COMPLETION,
+      ONBOARDING_PAGES.STREAK
     ] as const,
   },
   {
     key: KEYS.FEEDBACK,
     path: ROUTES.FEEDBACK,
-    pages: [STEPS.RATING, STEPS.COMPLETION, STEPS.FEED_BACKUSER_DDETAILS, STEPS.VERFIFICATION, STEPS.VERIFIED] as const,
+    pages: [STEPS.RATING, STEPS.COMPLETION, STEPS.FEED_BACKUSER_DDETAILS, STEPS.VERFIFICATION, STEPS.VERIFIED,STEPS.CREATE_PASSWORD] as const,
   },
   {
     key: KEYS.REPORT,
     path: ROUTES.REPORT,
-    pages: [STEPS.FLUENCY,STEPS.PRONUNCIATION,  STEPS.GRAMMAR,STEPS.VOCABULARY] as const,
+    pages: [STEPS.VIEW_REPORT,STEPS.ACCENT,STEPS.FLUENCY,STEPS.PRONUNCIATION,  STEPS.GRAMMAR,STEPS.VOCABULARY] as const,
   },
 ] as const;
 

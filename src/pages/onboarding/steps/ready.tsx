@@ -1,84 +1,81 @@
 import { LeftArrowIcon } from "@/assets"
-import { Button, Roadmap } from "@/components"
-import tickImg from "@/assets/images/tick.png"
+import { Button, Roadmap, RevealOnScroll } from "@/components"
+import { useFlowStore } from "@/store/flow";
+import { useOnboardingStore } from "@/store/onboarding"
 
 export const Ready = () => {
-  const infoCards = [
-    {
-      id: "duration",
-      title: "Duration",
-      description: "Fast, visible results in just 3 months",
-      icon: tickImg,
-    },
-    {
-      id: "focus",
-      title: "Focus on",
-      description: "Business English – for professional confidence",
-      icon: "/icons/target.svg",
-    },
-    {
-      id: "goal",
-      title: "Goal",
-      description: "Speak naturally and confidently at work",
-      icon: "/icons/goal.svg",
-    },
-    {
-      id: "tutor",
-      title: "Tutor Style",
-      description: "Cheerful - like having your favorite",
-      icon: "/icons/robot.svg",
-    },
-  ]
+  const { roadmapData } = useOnboardingStore();
+   const {back } = useFlowStore();
 
   return (
-    <div className="flex flex-col min-h-screen text-content1-foreground">
+    <div className="flex flex-col h-screen overflow-hidden text-content1-foreground">
 
       {/* Header */}
-      <div className="flex items-center gap-4 py-5 px-4 ">
-        <LeftArrowIcon />
-        <p className="text-[20px] font-semibold max-w-[250px] text-center">
+      <div className="shrink-0 flex items-center gap-4 py-5 px-4 z-10">
+        <span className="cursor-pointer" onClick={() => back()}>
+          <LeftArrowIcon />
+        </span>
+        <RevealOnScroll>
+        <p className="text-body3 font-semibold max-w-[300px] !text-center mx-auto leading-8">
           Rajinikanth, your growth roadmap is ready 🌟
         </p>
+        </RevealOnScroll>
       </div>
 
-      {/* Roadmap */}
-      <Roadmap className="pl-10" height={'400px'} />
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto no-scrollbar scroll-smooth">
+        {/* Roadmap */}
+        <RevealOnScroll delay={0.1}>
+        <Roadmap className="pl-10" height={'400px'} />
+        </RevealOnScroll>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-2 gap-5 px-4 mt-6">
-        {infoCards.map((card) => (
-          <div
-            key={card.id}
-            className="bg-content1-foreground/15 p-4 rounded-2xl flex flex-col justify-between gap-2 min-h-[150px]"
-          >
-            <div className="flex items-center justify-between">
-              <p className="font-bold text-h5">{card.title}</p>
-              <img
-                src={card.icon}
-                alt={card.title}
-                className="w-6 h-6"
-              />
+        {/* Cards Grid */}
+        <div className="grid grid-cols-2 gap-5 px-4 mt-6 pb-6">
+          {roadmapData.map((card, index) => (
+             <RevealOnScroll key={card.id} delay={0.2 + index * 0.1}>
+            <div
+              className="bg-content1-foreground/15 p-4 rounded-2xl flex flex-col justify-between gap-2 min-h-[150px]"
+            >
+              <div className="flex items-center justify-between">
+                <p className="font-bold text-h5">{card.title}</p>
+                {card.icon.startsWith("/") ? (
+                  <img
+                    src={card.icon}
+                    alt={card.title}
+                    className="w-6 h-6"
+                  />
+                ) : (
+                  <img
+                    src={card.icon}
+                    alt={card.title}
+                    className="w-6 h-6 object-contain"
+                  />
+                )}
+              </div>
+
+              <p className="text-content1-foreground">
+                {card.description}
+              </p>
             </div>
-
-            <p className="text-content1-foreground">
-              {card.description}
-            </p>
-          </div>
-        ))}
+            </RevealOnScroll>
+          ))}
+        </div>
       </div>
 
       {/* CTA */}
-      <div className="sticky bottom-0 bg-background-200 pt-5 pb-2 px-4
-            [mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]
-            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_15px,black)]">
+      <div className="shrink-0 pt-5 pb-2 px-4
+            [mask-image:linear-gradient(to_bottom,transparent,black_10px,black)]
+            [-webkit-mask-image:linear-gradient(to_bottom,transparent,black_10px,black)]">
+        <RevealOnScroll delay={0.6}>
           <Button
-            buttonText="Continue"
+            buttonText="I'm Ready – Let's Go!"
             variant="secondary"
             textClassName="text-body5 !text-content1 font-medium"
             baseClassName="!py-7 w-full transition-transform duration-75 ease-out active:scale-[0.97]"
             // onClick={onNext}
           />
-        </div>
+        </RevealOnScroll>
+      </div>
     </div>
   )
 }

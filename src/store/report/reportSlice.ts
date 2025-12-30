@@ -1,6 +1,6 @@
 import type { StateCreator } from "zustand";
 import type { ReportState } from "./types";
-export const createReportSlice: StateCreator<ReportState> = (set, get) => ({
+export const createReportSlice: StateCreator<ReportState> = () => ({
   title: "",
   value: 0,
   description: "",

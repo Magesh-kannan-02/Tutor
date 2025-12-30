@@ -14,7 +14,7 @@ import VirusImg from "@/assets/images/virus.png";
 import TrophyImg from "@/assets/images/trophy.png";
 import HappyImg from "@/assets/images/smile.png";
 import SmileImg from "@/assets/images/decent.png";
-
+import BadgeImg from "@/assets/images/badge.png";
 import maleImg from "@/assets/images/male.png";
 import thinkImg from "@/assets/images/think.png";
 import writingImg from "@/assets/images/writing.png";
@@ -57,8 +57,11 @@ import usersImg from "@/assets/images/users.png";
 import youtubeImg  from "@/assets/images/youtube.png";
 import announceImg from "@/assets/images/announce.png";
 import linkedInImg from "@/assets/images/linkedin.png";
-
+import LampImg from "@/assets/images/lamp.png";
 import FireImg from '@/assets/images/fire.png';
+import RookieImg from '@/assets/images/rookie.png';
+import GoalImg from '@/assets/images/goal.png';
+import L1Img from '@/assets/images/L1.png';
 export type SVGIcon = React.ComponentType<{
   fill?: string;
   className?: string;
@@ -273,6 +276,10 @@ export const iconMapping: Record<
     type: "image",
     icon: advancedImg,
   },
+  badge:{
+    type:"image",
+    icon:BadgeImg
+  },
   home:{
       type:'svg',
       icon: HomeIcon
@@ -284,6 +291,10 @@ export const iconMapping: Record<
     fire:{
       type:'image',
       icon: FireImg
+    },
+    lamp:{
+      type:'image',
+      icon: LampImg
     },
     facebook:{
       type:'image',
@@ -313,4 +324,16 @@ export const iconMapping: Record<
       type:'image',
       icon: youtubeImg
     },
+    rookie:{
+      type:'image',
+      icon: RookieImg
+    },
+    goal:{
+      type:'image',
+      icon: GoalImg
+    },
+    L1:{
+      type:'image',
+      icon: L1Img
+    }
 };

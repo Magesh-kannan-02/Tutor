@@ -12,6 +12,8 @@ export interface CircularProgressProps {
   label?: string;
   valueClassName?: string;
   labelClassName?: string;
+  content?: React.ReactNode;
+  counterClockwise?: boolean;
 }
 
 export const CircularProgress = ({
@@ -25,10 +27,17 @@ export const CircularProgress = ({
   label = "Score",
   valueClassName = "",
   labelClassName = "",
+  content,
+  counterClockwise = false,
 }: CircularProgressProps) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const progressOffset = circumference - (value / 100) * circumference;
+  
+  // Create unique ID for gradient
+  // Create unique ID for gradient
+  const [randomId] = useState(() => Math.random().toString(36).slice(2, 9));
+  const gradientId = id ? `${id}-gradient` : `gradient-${randomId}`;
 
   // animation state
   const [offset, setOffset] = useState(circumference);
@@ -42,7 +51,7 @@ export const CircularProgress = ({
     });
 
     // number animation
-    let start = 0;
+
     const duration = 1000;
     const startTime = performance.now();
 
@@ -54,6 +63,13 @@ export const CircularProgress = ({
 
     requestAnimationFrame(animateNumber);
   }, [progressOffset, value]);
+  
+  // Calculate transform for counter-clockwise
+  // Rotate -90 to start at top. 
+  // If counterClockwise, flip X axis: translate(size, 0) scale(-1, 1) applying to the rotated shape.
+  const transform = counterClockwise
+    ? `translate(${size}, 0) scale(-1, 1) rotate(-90 ${size / 2} ${size / 2})`
+    : `rotate(-90 ${size / 2} ${size / 2})`;
 
   return (
     <div
@@ -68,7 +84,7 @@ export const CircularProgress = ({
         {/* Gradient */}
         <defs>
           <linearGradient
-            id="progressGradient"
+            id={gradientId}
             x1="0%"
             y1="0%"
             x2="100%"
@@ -94,13 +110,13 @@ export const CircularProgress = ({
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="url(#progressGradient)"
+          stroke={`url(#${gradientId})`}
           strokeWidth={strokeWidth}
           fill="none"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
+          transform={transform}
           style={{
             transition: "stroke-dashoffset 1s ease-out",
           }}
@@ -118,24 +134,30 @@ export const CircularProgress = ({
           textAlign: "center",
         }}
       >
-        <p
-          className={cn(
-            "leading-none font-sans font-bold text-content1-foreground",
-            valueClassName
-          )}
-          style={{ fontSize: size * 0.23 }}
-        >
-          {displayValue}
-        </p>
-        <p
-          className={cn(
-            "leading-none font-sans font-medium text-secondary-150",
-            labelClassName
-          )}
-          style={{ fontSize: size * 0.13, marginTop: 4 }}
-        >
-          {label}
-        </p>
+        {content ? (
+          content
+        ) : (
+          <>
+            <p
+              className={cn(
+                "leading-none font-sans font-bold text-content1-foreground",
+                valueClassName
+              )}
+              style={{ fontSize: size * 0.23 }}
+            >
+              {displayValue}
+            </p>
+            <p
+              className={cn(
+                "leading-none font-sans font-medium text-secondary-150",
+                labelClassName
+              )}
+              style={{ fontSize: size * 0.13, marginTop: 4 }}
+            >
+              {label}
+            </p>
+          </>
+        )}
       </div>
     </div>
   );
