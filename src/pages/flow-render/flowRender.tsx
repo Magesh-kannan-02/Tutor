@@ -55,13 +55,19 @@ export const FlowRenderer = () => {
       [STEPS.FLUENCY]: <Report />,
       [STEPS.PRONUNCIATION]: <Report />,
       [STEPS.GRAMMAR]: <Report />,
-      [STEPS.VOCABULARY]: <Report />,
+      [STEPS.VOCABULARY]: <Report onComplete={() => navigate("/report/badge")} buttonText="Next" />,
       [STEPS.BADGE]: <Report />,
     },
 
     [KEYS.PRACTICE_FLOW]: {
       [ONBOARDING_PAGES.CALL]: <Onboarding />,
       [ONBOARDING_PAGES.ONBOARDING_COMPLETION]: <Onboarding />,
+      [STEPS.VIEW_REPORT]: <Report />,
+      [STEPS.ACCENT]: <Report />,
+      [STEPS.FLUENCY]: <Report />,
+      [STEPS.PRONUNCIATION]: <Report />,
+      [STEPS.GRAMMAR]: <Report />,
+      [STEPS.VOCABULARY]: <Report onComplete={() => navigate("/")} />
     },
   };
 

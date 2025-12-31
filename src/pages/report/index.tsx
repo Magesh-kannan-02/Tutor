@@ -21,7 +21,7 @@ import { ViewReport } from "./viewreport";
 import { Accent } from "./accent";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "./components/completion";
-import { useOnboardingStore } from "@/store/onboarding";
+// import { useOnboardingStore } from "@/store/onboarding";
 const badgeData = {
   id: "badge-1",
   name: "You’ve built a solid foundation.",
@@ -103,9 +103,15 @@ const pageComponents: Record<any, any> = {
   },
 };
 
-export const Report = () => {
+interface ReportProps {
+  homeRoute?: string;
+  onComplete?: () => void;
+  buttonText?: string;
+}
+
+export const Report = ({ homeRoute = "/", onComplete, buttonText }: ReportProps) => {
   const { stepIndex, pageIndex, next, direction } = useFlowStore();
-  const { progress } = useOnboardingStore();
+  // const { progress } = useOnboardingStore();
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const step = FLOW[stepIndex];
@@ -122,11 +128,22 @@ export const Report = () => {
       navigate("/onboarding/levelup");
       return;
     }
-    if (progress === 100 && currentPageKey === "vocabulary") navigate("/");
-    else next();
+    // Always navigate to home on vocabulary step completion
+    if (currentPageKey === "vocabulary") {
+      if (onComplete) {
+        onComplete();
+      } else {
+        navigate(homeRoute);
+      }
+    } else {
+      next();
+    }
   };
   const btnText = () => {
-    if (progress === 100 && currentPageKey === "vocabulary") {
+    if (buttonText) {
+      return buttonText;
+    }
+    if (currentPageKey === "vocabulary") {
       return "Done";
     } else {
       return currentPage?.buttonText;

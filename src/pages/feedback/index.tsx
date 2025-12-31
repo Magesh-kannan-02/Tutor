@@ -75,9 +75,9 @@ export const FeedBack = () => {
     switch (currentPageKey) {
       case "createPassword":
          
-         if(validatePassword()){
+         // if(validatePassword()){
             next();
-         }
+         // }
 
         break;
 
