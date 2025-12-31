@@ -1,10 +1,10 @@
 export const ROUTES = {
-  HOME: "/home",
+  HOME: "/",
   LOGIN: "/login",
   REGISTER: "/register",
   NOT_AUTHORIZED: "/not-authorized",
   PLAYGROUND: "/playground",
-  SELECT_TEST: "/",
+  SELECT_TEST: "/select-test",
   ONBOARDING: "/onboarding/:page",
   FEEDBACK: "/feedback/:page",
   REPORT: "/report/:page",
