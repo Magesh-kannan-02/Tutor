@@ -23,7 +23,7 @@ export const CreatePassword = ({
   description = "Enter a strong password to secure your account.",
 }: CreatePasswordProps) => {
   const { personalInfo, updatePersonalInfo, 
-    // personalInfoErrors 
+     personalInfoErrors 
   } =
     useAccountStore();
   return (
