@@ -18,9 +18,9 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
-  if (progress < 100) {
-    return <Navigate to={ROUTES.SELECT_TEST} replace />;
-  }
+  // if (progress < 100) {
+  //   return <Navigate to={ROUTES.SELECT_TEST} replace />;
+  // }
 
   const allowedPaths = roleRoutes[userRole as keyof typeof roleRoutes];
 
